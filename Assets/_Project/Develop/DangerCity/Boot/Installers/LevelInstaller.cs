@@ -1,4 +1,5 @@
 ﻿using DangerCity.Gameplay;
+using DangerCity.Gameplay.Lamp;
 using UnityEngine;
 using Zenject;
 
@@ -10,6 +11,16 @@ namespace DangerCity.Boot.Installers
     public override void InstallBindings()
     {
       BindGameModel();
+
+      BindLampPresenter();
+    }
+
+    private void BindLampPresenter()
+    {
+      Container
+        .Bind<ILampPresenter>()
+        .To<LampPresenter>()
+        .AsTransient();
     }
 
     private void BindGameModel()

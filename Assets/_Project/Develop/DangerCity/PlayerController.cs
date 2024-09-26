@@ -101,7 +101,7 @@ namespace DangerCity
           transform.position = TeleportPosition;
 
         if (IsExit)
-          _gameModel.IsWin = true;
+          _gameModel.IsWin.Value = true;
       }
     }
 

@@ -1,5 +1,6 @@
 ﻿using DangerCity.Infrastructure;
 using DangerCity.Infrastructure.Input;
+using DangerCity.Infrastructure.LifeCycle;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -25,6 +26,15 @@ namespace DangerCity.Boot.Installers
       BindInputData();
       BindPlayerInputActions();
       BindInputController();
+      BindExplicitInitializer();
+    }
+
+    private void BindExplicitInitializer()
+    {
+      Container
+        .Bind<IExplicitInitializer>()
+        .To<ExplicitInitializer>()
+        .AsSingle();
     }
 
     private void BindConfigProvider()

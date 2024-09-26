@@ -1,8 +1,10 @@
+using DangerCity.Infrastructure;
+
 namespace DangerCity.Gameplay
 {
   public class GameModel
   {
-    public bool IsOpen;
-    public bool IsWin;
+    public readonly CallbackValue<bool> IsOpen = new CallbackValue<bool>();
+    public readonly CallbackValue<bool> IsWin = new CallbackValue<bool>();
   }
 }
