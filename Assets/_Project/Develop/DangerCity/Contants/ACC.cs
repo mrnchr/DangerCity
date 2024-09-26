@@ -13,7 +13,9 @@
     {
       public const string LEVEL_INSTALLER = BOOT_MENU + "Level Installer";
       public const string PROJECT_INSTALLER = BOOT_MENU + "Project Installer";
+      
       public const string LAMP_VIEW = VIEW_MENU + "Lamp View";
+      public const string COINS_VIEW = VIEW_MENU + "Coins View";
     }
   }
 }

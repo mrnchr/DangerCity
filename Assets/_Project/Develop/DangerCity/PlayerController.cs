@@ -1,8 +1,7 @@
-using System;
 using DangerCity.Gameplay;
+using DangerCity.Gameplay.Hero;
 using DangerCity.Infrastructure.Input;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace DangerCity
@@ -14,9 +13,7 @@ namespace DangerCity
     private static readonly int _isRun = Animator.StringToHash("IsRun");
     
     public float Speed = 1f;
-    public int Coins;
     public Vector3 StartPosition;
-    public Text Score;
     public float JumpForce;
     public bool IsDie;
     public float SpeedUpDown;
@@ -32,10 +29,12 @@ namespace DangerCity
     private Animator _animator;
     private GameModel _gameModel;
     private InputData _inputData;
+    private HeroInventory _inventory;
 
     [Inject]
-    public void Construct(GameModel gameModel, InputData inputData)
+    public void Construct(GameModel gameModel, InputData inputData, HeroInventory inventory)
     {
+      _inventory = inventory;
       _inputData = inputData;
       _gameModel = gameModel;
       
@@ -47,8 +46,6 @@ namespace DangerCity
     {
       IsWalk = true;
       StartPosition = transform.position;
-      Coins = 0;
-      Score.text = "Coins: " + Coins;
     }
 
     private void Update()
@@ -58,8 +55,6 @@ namespace DangerCity
       Joystick(joystick.Horizontal + _inputData.Movement.x, joystick.Vertical + _inputData.Movement.y,
         _inputData.Jump, _inputData.Interact);
       
-      Score.text = "Coins: " + Coins;
-
       if (IsDie)
       {
         _animator.SetTrigger(_die);
@@ -71,7 +66,7 @@ namespace DangerCity
     {
       if (collision.CompareTag("Coin") && !IsDie)
       {
-        Coins++;
+        _inventory.Coins.Value++;
         Destroy(collision.gameObject);
       }
     }
@@ -86,7 +81,7 @@ namespace DangerCity
 
     public void Joystick(float horizontal = 0f, float vertical = 0f, bool jump = false, bool action = false)
     {
-      if (jump && !IsJump)
+      if (jump && (!IsJump || IsLadder))
         Jump();
       if (IsWalk)
         Walk(horizontal);

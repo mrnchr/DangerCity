@@ -5597,7 +5597,7 @@ GameObject:
   - component: {fileID: 1071322774}
   - component: {fileID: 1071322775}
   - component: {fileID: 1071322776}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -11449,7 +11449,7 @@ GameObject:
   - component: {fileID: 1234077781260519490}
   - component: {fileID: 1234077781260519549}
   - component: {fileID: 1234077781260519548}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -11874,7 +11874,7 @@ GameObject:
   - component: {fileID: 7894791290997900361}
   - component: {fileID: 7894791290997900406}
   - component: {fileID: 7894791290997900407}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}

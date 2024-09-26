@@ -1,5 +1,7 @@
 ﻿using DangerCity.Gameplay;
+using DangerCity.Gameplay.Hero;
 using DangerCity.Gameplay.Lamp;
+using DangerCity.UI.Coins;
 using UnityEngine;
 using Zenject;
 
@@ -11,8 +13,25 @@ namespace DangerCity.Boot.Installers
     public override void InstallBindings()
     {
       BindGameModel();
+      BindHeroInventory();
 
       BindLampPresenter();
+      BindCoinsPresenter();
+    }
+
+    private void BindHeroInventory()
+    {
+      Container
+        .Bind<HeroInventory>()
+        .AsSingle();
+    }
+
+    private void BindCoinsPresenter()
+    {
+      Container
+        .Bind<ICoinsPresenter>()
+        .To<CoinsPresenter>()
+        .AsSingle();
     }
 
     private void BindLampPresenter()
