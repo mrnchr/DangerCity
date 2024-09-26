@@ -12,6 +12,9 @@
     {
       public const string CONFIG_PROVIDER_FILE = "Config Provider";
       public const string CONFIG_PROVIDER_MENU = CONFIG_MENU + "Config Provider";
+      
+      public const string PHYSICS_FILE = "Physics Config";
+      public const string PHYSICS_MENU = CONFIG_MENU + "Physics";
     }
   }
 }

@@ -1,3 +1,4 @@
+using System;
 using DangerCity.Gameplay;
 using DangerCity.Infrastructure.Input;
 using UnityEngine;
@@ -8,6 +9,10 @@ namespace DangerCity
 {
   public class PlayerController : MonoBehaviour
   {
+    private static readonly int _die = Animator.StringToHash("Die");
+    private static readonly int _isJump = Animator.StringToHash("IsJump");
+    private static readonly int _isRun = Animator.StringToHash("IsRun");
+    
     public float Speed = 1f;
     public int Coins;
     public Vector3 StartPosition;
@@ -16,7 +21,6 @@ namespace DangerCity
     public bool IsDie;
     public float SpeedUpDown;
     public bool IsLadder;
-    public bool isGrounded;
     public bool IsJump;
     public bool IsWalk;
     public bool IsTeleport;
@@ -25,11 +29,7 @@ namespace DangerCity
     public Joystick joystick;
 
     private Rigidbody2D _rb;
-    private Vector2 _movement;
-    private static readonly int _die = Animator.StringToHash("Die");
     private Animator _animator;
-    private static readonly int _isJump = Animator.StringToHash("IsJump");
-    private static readonly int _isRun = Animator.StringToHash("IsRun");
     private GameModel _gameModel;
     private InputData _inputData;
 
@@ -38,20 +38,26 @@ namespace DangerCity
     {
       _inputData = inputData;
       _gameModel = gameModel;
+      
+      _animator = GetComponent<Animator>();
+      _rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
-      _animator = GetComponent<Animator>();
       IsWalk = true;
       StartPosition = transform.position;
       Coins = 0;
       Score.text = "Coins: " + Coins;
-      _rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
+      _animator.SetBool(_isJump, IsJump || IsLadder);
+      
+      Joystick(joystick.Horizontal + _inputData.Movement.x, joystick.Vertical + _inputData.Movement.y,
+        _inputData.Jump, _inputData.Interact);
+      
       Score.text = "Coins: " + Coins;
 
       if (IsDie)
@@ -59,14 +65,6 @@ namespace DangerCity
         _animator.SetTrigger(_die);
         enabled = false;
       }
-    }
-
-    private void FixedUpdate()
-    {
-      _animator.SetBool(_isJump, IsJump || IsLadder);
-
-      Joystick(joystick.Horizontal + _inputData.Movement.x, joystick.Vertical + _inputData.Movement.y,
-        _inputData.Jump, _inputData.Interact);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -107,8 +105,7 @@ namespace DangerCity
 
     private void Walk(float direction = 0f)
     {
-      _movement = new Vector2(direction * Speed, _rb.velocity.y);
-      _rb.velocity = _movement;
+      _rb.velocity = new Vector2(direction * Speed, _rb.velocity.y);
 
       _animator.SetBool(_isRun, direction != 0);
       if (direction != 0)

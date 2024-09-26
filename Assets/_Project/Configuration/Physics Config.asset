@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 505b3d0bec41471fa69fa2b3c23c0f4c, type: 3}
-  m_Name: Config Provider
+  m_Script: {fileID: 11500000, guid: 97f1da09ed794f8f805a50b17cb10d8f, type: 3}
+  m_Name: Physics Config
   m_EditorClassIdentifier: 
-  _configs:
-  - {fileID: 11400000, guid: 270d9b61e21be2b47b17df8877582828, type: 2}
+  GroundMask:
+    serializedVersion: 2
+    m_Bits: 128
+  AcceptableGroundDistance: 0.05
