@@ -1,4 +1,5 @@
 using DangerCity.Gameplay;
+using DangerCity.Infrastructure.Input;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -30,10 +31,12 @@ namespace DangerCity
     private static readonly int _isJump = Animator.StringToHash("IsJump");
     private static readonly int _isRun = Animator.StringToHash("IsRun");
     private GameModel _gameModel;
+    private InputData _inputData;
 
     [Inject]
-    public void Construct(GameModel gameModel)
+    public void Construct(GameModel gameModel, InputData inputData)
     {
+      _inputData = inputData;
       _gameModel = gameModel;
     }
 
@@ -62,8 +65,8 @@ namespace DangerCity
     {
       _animator.SetBool(_isJump, IsJump || IsLadder);
 
-      Joystick(joystick.Horizontal + Input.GetAxis("Horizontal"), joystick.Vertical + Input.GetAxis("Vertical"),
-        Input.GetButtonDown("Jump"), Input.GetKeyDown(KeyCode.E));
+      Joystick(joystick.Horizontal + _inputData.Movement.x, joystick.Vertical + _inputData.Movement.y,
+        _inputData.Jump, _inputData.Interact);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

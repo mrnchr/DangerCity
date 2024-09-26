@@ -1,24 +1,27 @@
+using DangerCity.Infrastructure.Input;
 using UnityEngine;
+using Zenject;
 
 namespace DangerCity
 {
   public class JoystickUI : MonoBehaviour
   {
-    private PlayerController _movement;
+    private InputData _inputData;
 
-    private void Awake()
+    [Inject]
+    public void Construct(InputData inputData)
     {
-      _movement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+      _inputData = inputData;
     }
 
     public void ActionBtn()
     {
-      _movement.Joystick(0, 0, false, true);
+      _inputData.Interact = true;
     }
 
     public void JumpBtn()
     {
-      _movement.Joystick(0, 0, true);
+      _inputData.Jump = true;
     }
   }
 }
