@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DangerCity.Gameplay;
+using UnityEngine;
 using Zenject;
 
 namespace DangerCity.Boot.Installers
@@ -8,7 +9,14 @@ namespace DangerCity.Boot.Installers
   {
     public override void InstallBindings()
     {
-      
+      BindGameModel();
+    }
+
+    private void BindGameModel()
+    {
+      Container
+        .Bind<GameModel>()
+        .AsSingle();
     }
   }
 }

@@ -1,5 +1,7 @@
+using DangerCity.Gameplay;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace DangerCity
 {
@@ -22,12 +24,18 @@ namespace DangerCity
     public Joystick joystick;
 
     private Rigidbody2D _rb;
-    private GameLogic _gameLogic;
     private Vector2 _movement;
     private static readonly int _die = Animator.StringToHash("Die");
     private Animator _animator;
     private static readonly int _isJump = Animator.StringToHash("IsJump");
     private static readonly int _isRun = Animator.StringToHash("IsRun");
+    private GameModel _gameModel;
+
+    [Inject]
+    public void Construct(GameModel gameModel)
+    {
+      _gameModel = gameModel;
+    }
 
     private void Start()
     {
@@ -37,7 +45,6 @@ namespace DangerCity
       Coins = 0;
       Score.text = "Coins: " + Coins;
       _rb = GetComponent<Rigidbody2D>();
-      _gameLogic = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<GameLogic>();
     }
 
     private void Update()
@@ -91,7 +98,7 @@ namespace DangerCity
           transform.position = TeleportPosition;
 
         if (IsExit)
-          _gameLogic.IsWin = true;
+          _gameModel.IsWin = true;
       }
     }
 

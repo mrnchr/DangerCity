@@ -1,20 +1,23 @@
+using DangerCity.Gameplay;
 using UnityEngine;
+using Zenject;
 
 namespace DangerCity
 {
   public class MainCoin : MonoBehaviour
   {
-    private GameLogic _gameLogic;
+    private GameModel _gameModel;
 
-    private void Awake()
+    [Inject]
+    public void Construct(GameModel gameModel)
     {
-      _gameLogic = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<GameLogic>();
+      _gameModel = gameModel;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
       if (collision.CompareTag("Player"))
-        _gameLogic.IsOpen = true;
+        _gameModel.IsOpen = true;
     }
   }
 }

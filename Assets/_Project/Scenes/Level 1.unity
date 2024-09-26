@@ -4884,52 +4884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2091e3c33fcc88848bc34149a1f97554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &893328453
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 893328455}
-  - component: {fileID: 893328454}
-  m_Layer: 0
-  m_Name: GameLogic
-  m_TagString: GameLogic
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &893328454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893328453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d9407a414b4bd844889e7a868159885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsOpen: 0
-  IsWin: 0
---- !u!4 &893328455
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893328453}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.674746, y: -0.13483083, z: -42.123398}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &899081069
 GameObject:
   m_ObjectHideFlags: 0
@@ -9524,10 +9478,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToggleMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 7485857838220927372, guid: c95c03498c6810a4bb1addcb6c78ddd6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7953532228498278285, guid: c95c03498c6810a4bb1addcb6c78ddd6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -12274,5 +12224,4 @@ SceneRoots:
   - {fileID: 8429111}
   - {fileID: 1723603186}
   - {fileID: 83497133}
-  - {fileID: 893328455}
   - {fileID: 524655879}
