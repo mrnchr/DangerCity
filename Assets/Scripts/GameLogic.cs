@@ -1,15 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameLogic : MonoBehaviour
 {
-    public bool isOpen;
-    public bool isWin;
+  [FormerlySerializedAs("isOpen")]
+  public bool IsOpen;
+  
+  [FormerlySerializedAs("isWin")]
+  public bool IsWin;
 
-    private void Awake()
-    {
-        isOpen = false;
-        isWin = false;
-    }
+  private void Awake()
+  {
+    IsOpen = false;
+    IsWin = false;
+  }
 }

@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayBtn()
-    {
-        SceneManager.LoadScene("Level 1");
-    }
+  public void PlayBtn()
+  {
+    SceneManager.LoadScene("Level 1");
+  }
 
-    public void ExitBtn()
-    {
-        Application.Quit();
-    }
+  public void ExitBtn()
+  {
+    Application.Quit();
+  }
 }

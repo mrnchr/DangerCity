@@ -1,25 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Pain : MonoBehaviour
 {
-    private GameObject Player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Player = GameObject.FindGameObjectWithTag("Player");
-    }
+  private GameObject _player;
+  private PlayerController _playerController;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-            Player.GetComponent<PlayerController>().isDie = true;
-    }
+  private void Awake()
+  {
+    _player = GameObject.FindGameObjectWithTag("Player");
+    _playerController = _player.GetComponent<PlayerController>();
+  }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  private void OnTriggerEnter2D(Collider2D collision)
+  {
+    if (collision.CompareTag("Player"))
+      _playerController.IsDie = true;
+  }
 }

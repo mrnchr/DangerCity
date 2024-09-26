@@ -1,21 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Victory : MonoBehaviour
 {
-    private PlayerController Exit;
+  private PlayerController _exit;
 
-    private void Awake()
-    {
-        Exit = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-    }
+  private void Awake()
+  {
+    _exit = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+  }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            Exit.isExit = true;
-        }
-    }
+  private void OnTriggerStay2D(Collider2D collision)
+  {
+    if (collision.CompareTag("Player"))
+      _exit.IsExit = true;
+  }
 }

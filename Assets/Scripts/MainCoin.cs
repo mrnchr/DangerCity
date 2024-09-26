@@ -1,21 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainCoin : MonoBehaviour
 {
-    private GameLogic CatchCoin;
+  private GameLogic _gameLogic;
 
-    private void Awake()
-    {
-        CatchCoin = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<GameLogic>();
-    }
+  private void Awake()
+  {
+    _gameLogic = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<GameLogic>();
+  }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Player")
-        {
-            CatchCoin.isOpen = true;
-        }
-    }
+  private void OnTriggerEnter2D(Collider2D collision)
+  {
+    if (collision.CompareTag("Player"))
+      _gameLogic.IsOpen = true;
+  }
 }

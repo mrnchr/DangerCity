@@ -1,25 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
-    public GameObject exit;
+  public GameObject Exit;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+  private void OnTriggerEnter2D(Collider2D collision)
+  {
+    if (collision.CompareTag("Player"))
     {
-        if (collision.tag == "Player")
-        {
-            collision.GetComponent<PlayerController>().isTeleport = true;
-            collision.GetComponent<PlayerController>().TeleportPosition = exit.transform.position;
-        }
+      collision.GetComponent<PlayerController>().IsTeleport = true;
+      collision.GetComponent<PlayerController>().TeleportPosition = Exit.transform.position;
     }
+  }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.tag == "Player")
-        {
-            collision.GetComponent<PlayerController>().isTeleport = false;
-        }
-    }
+  private void OnTriggerExit2D(Collider2D collision)
+  {
+    if (collision.CompareTag("Player"))
+      collision.GetComponent<PlayerController>().IsTeleport = false;
+  }
 }

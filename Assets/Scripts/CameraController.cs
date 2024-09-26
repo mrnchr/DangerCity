@@ -1,35 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
-    private GameObject _player;
-    private float BottomY, LeftX, RightX, TopY;// ћаксимальные значени€, которые может принимать камера
-    private Vector3 Coordinate;
-    // Start is called before the first frame update
-    void Awake()
-    {
-        _player = GameObject.FindGameObjectWithTag("Player");
-        transform.position += _player.transform.position;
+  private GameObject _player;
+  private float _bottom, _left, _right, _top;
 
-        BottomY = -2.5f;
-        TopY = 2.5f;
-        LeftX = -4.49f;
-        RightX = 4.49f;
-    }
+  private Vector3 _coordinate;
 
-    // Update is called once per frame
-    void Update()
-    {
-        Coordinate = _player.transform.position;
-        Coordinate.z = transform.position.z;
-        // ¬ычисл€ем координаты камеры, если она вышла за пределы сцены
-        Coordinate.x = Coordinate.x < LeftX ? LeftX : Coordinate.x;
-        Coordinate.x = Coordinate.x > RightX ? RightX : Coordinate.x;
-        Coordinate.y = Coordinate.y < BottomY ? BottomY : Coordinate.y;
-        Coordinate.y = Coordinate.y > TopY ? TopY : Coordinate.y;
-        transform.position = Coordinate;
-    }
+  private void Awake()
+  {
+    _player = GameObject.FindGameObjectWithTag("Player");
+
+    _bottom = -2.5f;
+    _top = 2.5f;
+    _left = -4.49f;
+    _right = 4.49f;
+  }
+
+  private void LateUpdate()
+  {
+    _coordinate = _player.transform.position;
+    _coordinate.z = transform.position.z;
+    _coordinate.x = Mathf.Clamp(_coordinate.x, _left, _right);
+    _coordinate.y = Mathf.Clamp(_coordinate.y, _bottom, _top);
+    transform.position = _coordinate;
+  }
 }
