@@ -15,6 +15,9 @@
       
       public const string PHYSICS_FILE = "Physics Config";
       public const string PHYSICS_MENU = CONFIG_MENU + "Physics";
+      
+      public const string HERO_CONFIG_MENU = CONFIG_MENU + "Hero";
+      public const string HERO_CONFIG_FILE = "Hero Config";
     }
   }
 }

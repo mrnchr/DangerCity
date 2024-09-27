@@ -1,10 +1,19 @@
+using DangerCity.Gameplay.Hero;
 using UnityEngine;
+using Zenject;
 
 namespace DangerCity
 {
   public class Death : StateMachineBehaviour
   {
     private PlayerController _playerController;
+    private HeroModel _heroModel;
+
+    [Inject]
+    public void Construct(HeroModel heroModel)
+    {
+      _heroModel = heroModel;
+    }
 
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -14,7 +23,7 @@ namespace DangerCity
     
       _playerController.enabled = true;
       animator.transform.position = _playerController.StartPosition;
-      _playerController.IsDie = false;
+      _heroModel.IsDie = false;
     }
   }
 }

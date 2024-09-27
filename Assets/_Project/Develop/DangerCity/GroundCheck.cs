@@ -1,3 +1,4 @@
+using DangerCity.Gameplay.Hero;
 using DangerCity.Infrastructure;
 using DangerCity.Infrastructure.Physics;
 using UnityEngine;
@@ -7,16 +8,16 @@ namespace DangerCity
 {
   public class GroundCheck : MonoBehaviour
   {
-    private PlayerController _playerController;
     private RaycastHit2D[] _hits;
     private ContactFilter2D _filter;
     private PhysicsConfig _physics;
+    private HeroModel _heroModel;
 
     [Inject]
-    public void Construct(IConfigProvider configProvider)
+    public void Construct(IConfigProvider configProvider, HeroModel heroModel)
     {
+      _heroModel = heroModel;
       _physics = configProvider.Get<PhysicsConfig>();
-      _playerController = GetComponentInParent<PlayerController>();
       
       _hits = new RaycastHit2D[5];
       _filter = new ContactFilter2D
@@ -29,7 +30,7 @@ namespace DangerCity
 
     private void FixedUpdate()
     {
-      _playerController.IsJump = 0 >= Physics2D.CircleCast(transform.position, _physics.AcceptableGroundDistance,
+      _heroModel.IsJump = 0 >= Physics2D.CircleCast(transform.position, _physics.AcceptableGroundDistance,
         Vector2.zero, _filter, _hits);
     }
   }

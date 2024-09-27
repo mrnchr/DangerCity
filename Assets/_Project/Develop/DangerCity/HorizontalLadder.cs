@@ -1,40 +1,85 @@
+using DangerCity.Gameplay.Hero;
 using UnityEngine;
+using Zenject;
 
 namespace DangerCity
 {
   public class HorizontalLadder : MonoBehaviour
   {
-    private PlayerController _controller;
+    private HeroModel _heroModel;
     private Rigidbody2D _rb;
     private GameObject _player;
+    private Collider2D _collGround;
+    private GameObject _groundCheck;
+    
+    private bool _active;
+    private bool _hasHero;
+    private bool _onLadder;
 
-    private void Awake()
+    [Inject]
+    public void Construct(HeroModel heroModel)
     {
+      _heroModel = heroModel;
       _player = GameObject.FindGameObjectWithTag("Player");
+      _groundCheck = GameObject.FindGameObjectWithTag("GroundCheck");
       _rb = _player.GetComponent<Rigidbody2D>();
-      _controller = _player.GetComponent<PlayerController>();
+      _collGround = GetComponent<Collider2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void FixedUpdate()
     {
-      if (collision.CompareTag("GroundCheck"))
-      {
-        _rb.velocity = new Vector2(0f, 0f);
-        _rb.gravityScale = 0;
+      _active = transform.position.y + _collGround.offset.y > _groundCheck.transform.position.y;
 
-        _controller.IsJump = false;
-        _controller.IsLadder = true;
-        _controller.IsWalk = false;
+      SetOnLadder(_active && _hasHero);
+    }
+
+    private void SetOnLadder(bool value)
+    {
+      switch (_onLadder, value)
+      {
+        case (false, true):
+          OnLadder();
+          break;
+        case (true, false):
+          NotOnLadder();
+          break;
       }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnLadder()
     {
-      if (collision.CompareTag("GroundCheck"))
+      _onLadder = true;
+      
+      _rb.velocity = new Vector2(0f, 0f);
+      _rb.gravityScale = 0;
+
+      _heroModel.IsJump = false;
+      _heroModel.IsLadder = true;
+      _heroModel.IsWalk = false;
+    }
+
+    private void NotOnLadder()
+    {
+      _onLadder = false;
+      
+      _rb.gravityScale = 1;
+      _heroModel.IsLadder = false;
+      _heroModel.IsWalk = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+      if (other.CompareTag("Player"))
       {
-        _rb.gravityScale = 1;
-        _controller.IsLadder = false;
-        _controller.IsWalk = true;
+        _hasHero = true;
+      }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+      if (other.CompareTag("Player"))
+      {
+        _hasHero = false;
       }
     }
   }

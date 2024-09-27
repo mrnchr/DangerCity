@@ -1,5 +1,6 @@
 using DangerCity.Gameplay;
 using DangerCity.Gameplay.Hero;
+using DangerCity.Infrastructure;
 using DangerCity.Infrastructure.Input;
 using UnityEngine;
 using Zenject;
@@ -11,51 +12,49 @@ namespace DangerCity
     private static readonly int _die = Animator.StringToHash("Die");
     private static readonly int _isJump = Animator.StringToHash("IsJump");
     private static readonly int _isRun = Animator.StringToHash("IsRun");
-    
-    public float Speed = 1f;
+
     public Vector3 StartPosition;
-    public float JumpForce;
-    public bool IsDie;
-    public float SpeedUpDown;
-    public bool IsLadder;
-    public bool IsJump;
-    public bool IsWalk;
-    public bool IsTeleport;
-    public Vector3 TeleportPosition;
-    public bool IsExit;
     public Joystick joystick;
+    public HeroModel HeroModel;
 
     private Rigidbody2D _rb;
     private Animator _animator;
     private GameModel _gameModel;
     private InputData _inputData;
     private HeroInventory _inventory;
+    private HeroConfig _config;
 
     [Inject]
-    public void Construct(GameModel gameModel, InputData inputData, HeroInventory inventory)
+    public void Construct(GameModel gameModel,
+      InputData inputData,
+      HeroInventory inventory,
+      HeroModel heroModel,
+      IConfigProvider configProvider)
     {
+      HeroModel = heroModel;
       _inventory = inventory;
       _inputData = inputData;
       _gameModel = gameModel;
-      
+      _config = configProvider.Get<HeroConfig>();
+
       _animator = GetComponent<Animator>();
       _rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
-      IsWalk = true;
+      HeroModel.IsWalk = true;
       StartPosition = transform.position;
     }
 
     private void Update()
     {
-      _animator.SetBool(_isJump, IsJump || IsLadder);
-      
+      _animator.SetBool(_isJump, HeroModel.IsJump || HeroModel.IsLadder);
+
       Joystick(joystick.Horizontal + _inputData.Movement.x, joystick.Vertical + _inputData.Movement.y,
         _inputData.Jump, _inputData.Interact);
-      
-      if (IsDie)
+
+      if (HeroModel.IsDie)
       {
         _animator.SetTrigger(_die);
         enabled = false;
@@ -64,7 +63,7 @@ namespace DangerCity
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-      if (collision.CompareTag("Coin") && !IsDie)
+      if (collision.CompareTag("Coin") && !HeroModel.IsDie)
       {
         _inventory.Coins.Value++;
         Destroy(collision.gameObject);
@@ -75,32 +74,32 @@ namespace DangerCity
     {
       _rb.gravityScale = 1;
       _rb.velocity = new Vector2(_rb.velocity.x, 0);
-      _rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
-      IsJump = true;
+      _rb.AddForce(Vector2.up * _config.JumpForce, ForceMode2D.Impulse);
+      HeroModel.IsJump = true;
     }
 
     public void Joystick(float horizontal = 0f, float vertical = 0f, bool jump = false, bool action = false)
     {
-      if (jump && (!IsJump || IsLadder))
+      if (jump && (!HeroModel.IsJump || HeroModel.IsLadder))
         Jump();
-      if (IsWalk)
+      if (HeroModel.IsWalk)
         Walk(horizontal);
-      if (IsLadder)
+      if (HeroModel.IsLadder)
         OnLadder(horizontal, vertical);
 
       if (action)
       {
-        if (IsTeleport)
-          transform.position = TeleportPosition;
+        if (HeroModel.CanTeleport)
+          transform.position = HeroModel.TeleportPosition;
 
-        if (IsExit)
+        if (HeroModel.IsExit)
           _gameModel.IsWin.Value = true;
       }
     }
 
     private void Walk(float direction = 0f)
     {
-      _rb.velocity = new Vector2(direction * Speed, _rb.velocity.y);
+      _rb.velocity = new Vector2(direction * _config.Speed, _rb.velocity.y);
 
       _animator.SetBool(_isRun, direction != 0);
       if (direction != 0)
@@ -111,11 +110,12 @@ namespace DangerCity
     {
       if (_rb.gravityScale != 0)
       {
-        IsJump = false;
+        HeroModel.IsJump = false;
         _rb.gravityScale = 0;
       }
-    
-      _rb.velocity = new Vector3(horizontal * SpeedUpDown, vertical * SpeedUpDown, 0f);
+
+      Vector2 direction = new Vector2(horizontal, vertical).normalized;
+      _rb.velocity = direction * _config.SpeedOnLadder;
     }
   }
 }
