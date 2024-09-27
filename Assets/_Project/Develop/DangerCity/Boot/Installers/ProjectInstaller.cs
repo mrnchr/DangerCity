@@ -34,7 +34,8 @@ namespace DangerCity.Boot.Installers
       Container
         .Bind<IExplicitInitializer>()
         .To<ExplicitInitializer>()
-        .AsSingle();
+        .AsSingle()
+        .CopyIntoAllSubContainers();
     }
 
     private void BindConfigProvider()

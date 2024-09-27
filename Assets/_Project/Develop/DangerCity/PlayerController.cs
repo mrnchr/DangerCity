@@ -3,6 +3,7 @@ using DangerCity.Gameplay.Hero;
 using DangerCity.Infrastructure;
 using DangerCity.Infrastructure.Input;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace DangerCity
@@ -80,7 +81,12 @@ namespace DangerCity
           transform.position = HeroModel.TeleportPosition;
 
         if (HeroModel.IsExit)
+        {
           _gameModel.IsWin.Value = true;
+          int nextBuildIndex = SceneManager.GetActiveScene().buildIndex + 1;
+          if (nextBuildIndex < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(nextBuildIndex);
+        }
       }
     }
 
