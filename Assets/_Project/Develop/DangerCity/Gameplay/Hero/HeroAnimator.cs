@@ -1,60 +1,53 @@
 ﻿using System;
 using DangerCity.Infrastructure.LifeCycle;
 using UnityEngine;
-using Zenject;
 
 namespace DangerCity.Gameplay.Hero
 {
-  public class HeroAnimator : IHeroAnimator, ITickable, IDisposable
+  public class HeroAnimator : IHeroProcessor, IDisposable
   {
     private static readonly int _die = Animator.StringToHash("Die");
     private static readonly int _isJump = Animator.StringToHash("IsJump");
     private static readonly int _isRun = Animator.StringToHash("IsRun");
 
-    private readonly HeroModel _heroModel;
-    private readonly IExplicitInitializer _initializer;
+    private readonly IHeroController _controller;
     private Animator _animator;
 
-    public HeroAnimator(HeroModel heroModel, IExplicitInitializer initializer)
+    public HeroAnimator(IHeroController controller, IExplicitInitializer initializer)
     {
-      _heroModel = heroModel;
-      _initializer = initializer;
-      _initializer.Add(this);
+      _controller = controller;
+      _animator = _controller.View.Animator;
 
-      _heroModel.IsJump.OnChanged += AnimateJump;
-      _heroModel.IsLadder.OnChanged += AnimateJump;
-      _heroModel.IsDie.OnChanged += AnimateDie;
-      _heroModel.IsMove.OnChanged += AnimateRun;
+      initializer.Add(this);
+      
+      _controller.Model.IsJump.OnChanged += AnimateJump;
+      _controller.Model.IsLadder.OnChanged += AnimateJump;
+      _controller.Model.IsDie.OnChanged += AnimateDie;
+      _controller.Model.IsMove.OnChanged += AnimateRun;
     }
 
     private void AnimateRun()
     {
-      _animator.SetBool(_isRun, _heroModel.IsMove);
+      _animator.SetBool(_isRun, _controller.Model.IsMove);
     }
 
     private void AnimateDie()
     {
-      if (_heroModel.IsDie)
+      if (_controller.Model.IsDie)
         _animator.SetTrigger(_die);
     }
 
     private void AnimateJump()
     {
-      _animator.SetBool(_isJump, _heroModel.IsJump || _heroModel.IsLadder);
+      _animator.SetBool(_isJump, _controller.Model.IsJump || _controller.Model.IsLadder);
     }
 
     public void Dispose()
     {
-      _initializer.Remove(this);
-    }
-
-    public void SetAnimator(Animator animator)
-    {
-      _animator = animator;
-    }
-
-    public void Tick()
-    {
+      _controller.Model.IsJump.OnChanged -= AnimateJump;
+      _controller.Model.IsLadder.OnChanged -= AnimateJump;
+      _controller.Model.IsDie.OnChanged -= AnimateDie;
+      _controller.Model.IsMove.OnChanged -= AnimateRun;
     }
   }
 }

@@ -13,9 +13,6 @@ namespace DangerCity
     public Joystick joystick;
     public HeroModel HeroModel;
 
-    [SerializeField]
-    private Animator _animator;
-    
     private Rigidbody2D _rb;
     private GameModel _gameModel;
     private InputData _inputData;
@@ -27,8 +24,7 @@ namespace DangerCity
       InputData inputData,
       HeroInventory inventory,
       HeroModel heroModel,
-      IConfigProvider configProvider,
-      IHeroAnimator heroAnimator)
+      IConfigProvider configProvider)
     {
       HeroModel = heroModel;
       _inventory = inventory;
@@ -36,13 +32,10 @@ namespace DangerCity
       _gameModel = gameModel;
       _config = configProvider.Get<HeroConfig>();
       _rb = GetComponent<Rigidbody2D>();
-      
-      heroAnimator.SetAnimator(_animator);
     }
 
     private void Start()
     {
-      HeroModel.IsWalk.Value = true;
       StartPosition = transform.position;
     }
 
@@ -78,8 +71,6 @@ namespace DangerCity
     {
       if (jump && (!HeroModel.IsJump || HeroModel.IsLadder))
         Jump();
-      if (HeroModel.IsWalk)
-        Walk(horizontal);
       if (HeroModel.IsLadder)
         OnLadder(horizontal, vertical);
 
@@ -93,21 +84,9 @@ namespace DangerCity
       }
     }
 
-    private void Walk(float direction = 0f)
-    {
-      _rb.velocity = new Vector2(direction * _config.Speed, _rb.velocity.y);
-      HeroModel.IsMove.Value = direction != 0;
-
-      if (direction != 0)
-      {
-        HeroModel.BodyDirection.Value = Mathf.Sign(direction);
-        transform.eulerAngles = new Vector3(0, direction > 0 ? 0 : 180, 0);
-      }
-    }
-
     private void OnLadder(float horizontal = 0f, float vertical = 0f)
     {
-      if (_rb.gravityScale != 0)
+      if (_rb.velocity.y < 0)
       {
         HeroModel.IsJump.Value = false;
         _rb.gravityScale = 0;
@@ -115,11 +94,6 @@ namespace DangerCity
 
       Vector2 direction = new Vector2(horizontal, vertical).normalized;
       _rb.velocity = direction * _config.SpeedOnLadder;
-    }
-
-    private void Reset()
-    {
-      _animator = GetComponent<Animator>();
     }
   }
 }

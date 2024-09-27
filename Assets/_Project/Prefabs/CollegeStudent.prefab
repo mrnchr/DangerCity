@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 8254986013809556859}
   - component: {fileID: 8254986013809556858}
   - component: {fileID: 7993913333582147312}
+  - component: {fileID: 364394644986439942}
   m_Layer: 0
   m_Name: CollegeStudent
   m_TagString: Player
@@ -201,7 +202,42 @@ MonoBehaviour:
     BodyDirection:
       _value: 1
     TeleportPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &364394644986439942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254986013809556861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b795599503fc4193aece78678fbdaab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPosition: {x: 0, y: 0, z: 0}
+  joystick: {fileID: 0}
+  HeroModel:
+    CanMove:
+      _value: 1
+    IsDie:
+      _value: 0
+    IsLadder:
+      _value: 0
+    IsJump:
+      _value: 0
+    IsWalk:
+      _value: 0
+    IsMove:
+      _value: 0
+    CanTeleport:
+      _value: 0
+    IsExit:
+      _value: 0
+    BodyDirection:
+      _value: 1
+    TeleportPosition: {x: 0, y: 0, z: 0}
   _animator: {fileID: 8254986013809556851}
+  _rb: {fileID: 8254986013809556859}
 --- !u!1001 &8254986012638538917
 PrefabInstance:
   m_ObjectHideFlags: 0

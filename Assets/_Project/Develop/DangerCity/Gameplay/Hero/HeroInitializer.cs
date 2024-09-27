@@ -1,0 +1,26 @@
+﻿using DangerCity.Gameplay.Hero.Movement;
+using Zenject;
+
+namespace DangerCity.Gameplay.Hero
+{
+  public class HeroInitializer : IInitializable
+  {
+    private readonly IHeroProvider _heroProvider;
+    private readonly IHeroProcessorFactory _factory;
+
+    public HeroInitializer(IHeroProvider heroProvider, IHeroProcessorFactory factory)
+    {
+      _heroProvider = heroProvider;
+      _factory = factory;
+    }
+    
+    public void Initialize()
+    {
+      if (_heroProvider.HeroController != null)
+      {
+        _heroProvider.HeroController.AddProcessor(_factory.Create<HeroAnimator>());
+        _heroProvider.HeroController.AddProcessor(_factory.Create<HeroMover>());
+      }
+    }
+  }
+}

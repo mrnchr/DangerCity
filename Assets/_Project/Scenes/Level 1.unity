@@ -4348,6 +4348,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 364394644986439942, guid: 0521d483273d3ed439c8001fc040d5bf, type: 3}
+      propertyPath: joystick
+      value: 
+      objectReference: {fileID: 1723603188}
     - target: {fileID: 7993913333582147312, guid: 0521d483273d3ed439c8001fc040d5bf, type: 3}
       propertyPath: joystick
       value: 

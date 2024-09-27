@@ -15,17 +15,43 @@ namespace DangerCity.Boot.Installers
       BindGameModel();
       BindHeroInventory();
       BindHeroModel();
-      BindHeroAnimator();
+      BindHeroProcessorFactory();
+      BindHeroController();
+      BindHeroProvider();
+      BindHeroInitializer();
 
       BindLampPresenter();
       BindCoinsPresenter();
     }
 
-    private void BindHeroAnimator()
+    private void BindHeroInitializer()
     {
       Container
-        .Bind<IHeroAnimator>()
-        .To<HeroAnimator>()
+        .BindInterfacesTo<HeroInitializer>()
+        .AsSingle();
+    }
+
+    private void BindHeroProvider()
+    {
+      Container
+        .Bind<IHeroProvider>()
+        .To<HeroProvider>()
+        .AsSingle();
+    }
+
+    private void BindHeroController()
+    {
+      Container
+        .Bind<IHeroController>()
+        .To<HeroController>()
+        .AsSingle();
+    }
+
+    private void BindHeroProcessorFactory()
+    {
+      Container
+        .Bind<IHeroProcessorFactory>()
+        .To<HeroProcessorFactory>()
         .AsSingle();
     }
 

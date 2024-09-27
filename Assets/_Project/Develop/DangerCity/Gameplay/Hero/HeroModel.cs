@@ -7,7 +7,7 @@ namespace DangerCity.Gameplay.Hero
   [Serializable]
   public class HeroModel
   {
-    public CallbackValue<bool> CanMove = new CallbackValue<bool>();
+    public CallbackValue<bool> CanMove = new CallbackValue<bool>(true);
     public CallbackValue<bool> IsDie = new CallbackValue<bool>();
     public CallbackValue<bool> IsLadder = new CallbackValue<bool>();
     public CallbackValue<bool> IsJump = new CallbackValue<bool>();
