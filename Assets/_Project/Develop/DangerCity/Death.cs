@@ -23,7 +23,7 @@ namespace DangerCity
     
       _playerController.enabled = true;
       animator.transform.position = _playerController.StartPosition;
-      _heroModel.IsDie = false;
+      _heroModel.IsDie.Value = false;
     }
   }
 }

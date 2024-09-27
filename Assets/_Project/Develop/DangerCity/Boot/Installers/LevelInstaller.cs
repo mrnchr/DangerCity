@@ -15,9 +15,18 @@ namespace DangerCity.Boot.Installers
       BindGameModel();
       BindHeroInventory();
       BindHeroModel();
+      BindHeroAnimator();
 
       BindLampPresenter();
       BindCoinsPresenter();
+    }
+
+    private void BindHeroAnimator()
+    {
+      Container
+        .Bind<IHeroAnimator>()
+        .To<HeroAnimator>()
+        .AsSingle();
     }
 
     private void BindHeroModel()

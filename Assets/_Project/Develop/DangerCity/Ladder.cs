@@ -30,9 +30,9 @@ namespace DangerCity
         _rb.gravityScale = 0;
         _player.layer = LayerMask.NameToLayer("OnLadder");
 
-        _heroModel.IsJump = false;
-        _heroModel.IsLadder = true;
-        _heroModel.IsWalk = false;
+        _heroModel.IsJump.Value = false;
+        _heroModel.IsLadder.Value = true;
+        _heroModel.IsWalk.Value = false;
       }
     }
 
@@ -42,8 +42,8 @@ namespace DangerCity
       {
         _player.layer = LayerMask.NameToLayer("Default");
         _rb.gravityScale = 1;
-        _heroModel.IsLadder = false;
-        _heroModel.IsWalk = true;
+        _heroModel.IsLadder.Value = false;
+        _heroModel.IsWalk.Value = true;
       }
     }
   }

@@ -30,7 +30,7 @@ namespace DangerCity
 
     private void FixedUpdate()
     {
-      _heroModel.IsJump = 0 >= Physics2D.CircleCast(transform.position, _physics.AcceptableGroundDistance,
+      _heroModel.IsJump.Value = 0 >= Physics2D.CircleCast(transform.position, _physics.AcceptableGroundDistance,
         Vector2.zero, _filter, _hits);
     }
   }

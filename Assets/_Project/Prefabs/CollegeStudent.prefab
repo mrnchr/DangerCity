@@ -179,20 +179,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8baf7994507081446b9d76a61da32080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
-  Coins: 0
   StartPosition: {x: 0, y: 0, z: 0}
-  Score: {fileID: 0}
-  JumpForce: 2.3
-  IsDie: 0
-  SpeedUpDown: 3
-  IsLadder: 0
-  IsJump: 0
-  IsWalk: 0
-  IsTeleport: 0
-  TeleportPosition: {x: 0, y: 0, z: 0}
-  IsExit: 0
   joystick: {fileID: 0}
+  HeroModel:
+    CanMove:
+      _value: 0
+    IsDie:
+      _value: 0
+    IsLadder:
+      _value: 0
+    IsJump:
+      _value: 0
+    IsWalk:
+      _value: 0
+    IsMove:
+      _value: 0
+    CanTeleport:
+      _value: 0
+    IsExit:
+      _value: 0
+    BodyDirection:
+      _value: 1
+    TeleportPosition: {x: 0, y: 0, z: 0}
+  _animator: {fileID: 8254986013809556851}
 --- !u!1001 &8254986012638538917
 PrefabInstance:
   m_ObjectHideFlags: 0

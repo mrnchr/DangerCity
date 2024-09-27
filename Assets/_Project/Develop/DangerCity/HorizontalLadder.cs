@@ -53,9 +53,9 @@ namespace DangerCity
       _rb.velocity = new Vector2(0f, 0f);
       _rb.gravityScale = 0;
 
-      _heroModel.IsJump = false;
-      _heroModel.IsLadder = true;
-      _heroModel.IsWalk = false;
+      _heroModel.IsJump.Value = false;
+      _heroModel.IsLadder.Value = true;
+      _heroModel.IsWalk.Value = false;
     }
 
     private void NotOnLadder()
@@ -63,8 +63,8 @@ namespace DangerCity
       _onLadder = false;
       
       _rb.gravityScale = 1;
-      _heroModel.IsLadder = false;
-      _heroModel.IsWalk = true;
+      _heroModel.IsLadder.Value = false;
+      _heroModel.IsWalk.Value = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

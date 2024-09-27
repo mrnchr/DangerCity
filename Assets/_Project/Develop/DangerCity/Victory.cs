@@ -17,7 +17,7 @@ namespace DangerCity
     private void OnTriggerStay2D(Collider2D collision)
     {
       if (collision.CompareTag("Player"))
-        _heroModel.IsExit = true;
+        _heroModel.IsExit.Value = true;
     }
   }
 }

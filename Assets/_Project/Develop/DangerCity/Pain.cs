@@ -17,7 +17,7 @@ namespace DangerCity
     private void OnTriggerEnter2D(Collider2D collision)
     {
       if (collision.CompareTag("Player"))
-        _heroModel.IsDie = true;
+        _heroModel.IsDie.Value = true;
     }
   }
 }

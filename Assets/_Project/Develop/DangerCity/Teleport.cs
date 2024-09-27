@@ -19,7 +19,7 @@ namespace DangerCity
     {
       if (collision.CompareTag("Player"))
       {
-        _heroModel.CanTeleport = true;
+        _heroModel.CanTeleport.Value = true;
         _heroModel.TeleportPosition = Exit.transform.position;
       }
     }
@@ -27,7 +27,7 @@ namespace DangerCity
     private void OnTriggerExit2D(Collider2D collision)
     {
       if (collision.CompareTag("Player"))
-        _heroModel.CanTeleport = false;
+        _heroModel.CanTeleport.Value = false;
     }
   }
 }
