@@ -21,11 +21,14 @@
       public const string CAMERA_VIEW = VIEW_MENU + "Camera View";
       public const string TELEPORT = VIEW_MENU + "Teleport";
       public const string COIN_VIEW = VIEW_MENU + "Coin View";
+      public const string MAIN_COIN_VIEW = VIEW_MENU + "Main Coin View";
 
       public const string HERO_DETECTOR = SERVICES_MENU + "Hero Detector";
       public const string NEXT_SCENE_LOADER = SERVICES_MENU + "Next Scene Loader";
       public const string HERO_INTERACTION_DETECTOR = SERVICES_MENU + "Hero Interaction Detector";
       public const string DEATH_ACTIVATOR = SERVICES_MENU + "Death Activator";
+      public const string LADDER = VIEW_MENU + "Ladder";
+      public const string HORIZONTAL_LADDER = VIEW_MENU + "Horizontal Ladder";
     }
   }
 }

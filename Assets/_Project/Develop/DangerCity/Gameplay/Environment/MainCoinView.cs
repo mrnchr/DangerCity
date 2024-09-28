@@ -1,13 +1,12 @@
-using System;
-using DangerCity.Gameplay;
 using DangerCity.Gameplay.Hero.Movement;
 using UnityEngine;
 using Zenject;
 
-namespace DangerCity
+namespace DangerCity.Gameplay.Environment
 {
+  [AddComponentMenu(ACC.Names.MAIN_COIN_VIEW)]
   [RequireComponent(typeof(HeroDetector))]
-  public class MainCoin : MonoBehaviour
+  public class MainCoinView : MonoBehaviour
   {
     [SerializeField]
     private HeroDetector _heroDetector;

@@ -4,6 +4,7 @@ using DangerCity.Gameplay.FlexibleCamera;
 using DangerCity.Gameplay.Hero;
 using DangerCity.Gameplay.Hero.Data;
 using DangerCity.Gameplay.Hero.Meta;
+using DangerCity.Gameplay.Hero.Movement;
 using DangerCity.UI.Coins;
 using UnityEngine;
 using Zenject;
@@ -23,10 +24,19 @@ namespace DangerCity.Boot.Installers
       BindHeroProvider();
       BindHeroInitializer();
 
+      BindHeroLadderService();
+
       BindLampPresenter();
       BindCoinsPresenter();
 
       BindCameraController();
+    }
+
+    private void BindHeroLadderService()
+    {
+      Container
+        .BindInterfacesTo<HeroLadderService>()
+        .AsSingle();
     }
 
     private void BindCameraController()

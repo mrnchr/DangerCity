@@ -487,6 +487,7 @@ GameObject:
   - component: {fileID: 39061429}
   - component: {fileID: 39061431}
   - component: {fileID: 39061430}
+  - component: {fileID: 39061432}
   m_Layer: 0
   m_Name: SavingLadder
   m_TagString: Untagged
@@ -530,6 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c58f7aa93cca48b0b3d4aa056807d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 39061432}
 --- !u!61 &39061431
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -576,6 +578,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.41281658, y: 1.4921159}
   m_EdgeRadius: 0
+--- !u!114 &39061432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39061428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &47094074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -821,6 +835,7 @@ GameObject:
   - component: {fileID: 94171564}
   - component: {fileID: 94171566}
   - component: {fileID: 94171565}
+  - component: {fileID: 94171567}
   m_Layer: 0
   m_Name: GreenMetalLadder 5
   m_TagString: Untagged
@@ -867,6 +882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c58f7aa93cca48b0b3d4aa056807d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 94171567}
 --- !u!61 &94171566
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -913,6 +929,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.4231739, y: 1.6398406}
   m_EdgeRadius: 0
+--- !u!114 &94171567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94171563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &103441255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,6 +2650,7 @@ GameObject:
   - component: {fileID: 456506380}
   - component: {fileID: 456506382}
   - component: {fileID: 456506381}
+  - component: {fileID: 456506383}
   m_Layer: 0
   m_Name: 'FirstMetalLadder '
   m_TagString: Untagged
@@ -2671,6 +2700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c58f7aa93cca48b0b3d4aa056807d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 456506383}
 --- !u!61 &456506382
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2717,6 +2747,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.42615318, y: 2.3136582}
   m_EdgeRadius: 0
+--- !u!114 &456506383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456506379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &471709410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,6 +2856,7 @@ GameObject:
   - component: {fileID: 491402120}
   - component: {fileID: 491402122}
   - component: {fileID: 491402121}
+  - component: {fileID: 491402123}
   m_Layer: 0
   m_Name: GreenLadder 3
   m_TagString: Untagged
@@ -2851,6 +2894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c58f7aa93cca48b0b3d4aa056807d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 491402123}
 --- !u!61 &491402122
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2897,6 +2941,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.31457543, y: 2.304317}
   m_EdgeRadius: 0
+--- !u!114 &491402123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491402119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &501249040
 GameObject:
   m_ObjectHideFlags: 0
@@ -6650,6 +6706,7 @@ GameObject:
   - component: {fileID: 1338163225}
   - component: {fileID: 1338163227}
   - component: {fileID: 1338163226}
+  - component: {fileID: 1338163228}
   m_Layer: 0
   m_Name: MetalLadder 4
   m_TagString: Untagged
@@ -6694,6 +6751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c58f7aa93cca48b0b3d4aa056807d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 1338163228}
 --- !u!61 &1338163227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6740,6 +6798,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.40990877, y: 1.4794495}
   m_EdgeRadius: 0
+--- !u!114 &1338163228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338163224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1355145948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7508152518824578523, guid: f441c8c2b874fc044b71c8f325e12762, type: 3}
@@ -8420,6 +8490,7 @@ GameObject:
   - component: {fileID: 1642082897}
   - component: {fileID: 1642082899}
   - component: {fileID: 1642082898}
+  - component: {fileID: 1642082900}
   m_Layer: 0
   m_Name: HorizontalLadder
   m_TagString: Untagged
@@ -8512,6 +8583,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.7893698, y: 0.10811457}
   m_EdgeRadius: 0
+--- !u!114 &1642082900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642082896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1645658819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10329,6 +10412,7 @@ GameObject:
   - component: {fileID: 1951855593}
   - component: {fileID: 1951855595}
   - component: {fileID: 1951855594}
+  - component: {fileID: 1951855596}
   m_Layer: 0
   m_Name: GreenLaddertoRoof
   m_TagString: Untagged
@@ -10366,6 +10450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c58f7aa93cca48b0b3d4aa056807d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 1951855596}
 --- !u!61 &1951855595
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10412,6 +10497,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.31816292, y: 2.2911592}
   m_EdgeRadius: 0
+--- !u!114 &1951855596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951855592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1962144899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5621474711828198538, guid: 6458e70323c4ea54f9bc94918d16f993, type: 3}
