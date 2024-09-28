@@ -1,3 +1,4 @@
+using System;
 using DangerCity.Gameplay.Hero.Data;
 using DangerCity.Gameplay.Hero.Movement;
 using UnityEngine;
@@ -24,6 +25,11 @@ namespace DangerCity.Gameplay.Environment
     private void DieHero()
     {
       _heroModel.IsDie.Value = true;
+    }
+
+    private void OnDestroy()
+    {
+      _heroDetector.OnHeroDetected -= DieHero;
     }
 
     private void Reset()

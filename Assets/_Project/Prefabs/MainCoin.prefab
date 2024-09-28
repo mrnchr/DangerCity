@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8359328202228570837}
   - component: {fileID: 8359328202228570835}
   - component: {fileID: 8359328202228570833}
+  - component: {fileID: 4168326753331887370}
+  - component: {fileID: 4058134264395326272}
   m_Layer: 0
   m_Name: MainCoin
   m_TagString: Coin
@@ -136,3 +138,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be11a9df864ddde439190130d2ee0050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 4168326753331887370}
+--- !u!114 &4168326753331887370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8359328202228570836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4058134264395326272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8359328202228570836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a323b85c4d4c3ba1a625e2db160c29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 4168326753331887370}
