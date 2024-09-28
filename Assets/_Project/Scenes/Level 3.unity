@@ -1534,6 +1534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75390568c5b4c3e4290bca16b790afe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _groundCollider: {fileID: 78025092}
 --- !u!1 &84173755
 GameObject:
   m_ObjectHideFlags: 0
@@ -3230,6 +3231,8 @@ GameObject:
   - component: {fileID: 266245019}
   - component: {fileID: 266245022}
   - component: {fileID: 266245021}
+  - component: {fileID: 266245024}
+  - component: {fileID: 266245023}
   m_Layer: 0
   m_Name: Exit Teleport Door
   m_TagString: Teleport
@@ -3364,7 +3367,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba582fcd699e83447b9e476942630d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Exit: {fileID: 1254156296}
+  _heroDetector: {fileID: 0}
+  _exit: {fileID: 0}
+--- !u!114 &266245023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266245018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4de7d123f7b411b849e85f906e1715a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 266245024}
+--- !u!114 &266245024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266245018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &289721015
 GameObject:
   m_ObjectHideFlags: 0
@@ -4299,97 +4328,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32901812, y: 1.3092806}
   m_EdgeRadius: 0
---- !u!1 &431692308
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 431692309}
-  - component: {fileID: 431692310}
-  - component: {fileID: 431692311}
-  m_Layer: 7
-  m_Name: Ground
-  m_TagString: Ground
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &431692309
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431692308}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.754, y: 0.46500015, z: -4.1249}
-  m_LocalScale: {x: 1.6595, y: 1.6595, z: 1.6595}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1168501681}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &431692310
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431692308}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 66119838a2899af40ac7dee52e3d7876, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 5.34, y: 0.02}
-  m_EdgeRadius: 0
---- !u!114 &431692311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431692308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75390568c5b4c3e4290bca16b790afe7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &434492202
 GameObject:
   m_ObjectHideFlags: 0
@@ -5272,7 +5210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665ca0a80871aa84f8268d49b481ba71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Green: {r: 0.54509807, g: 1, b: 0.5411765, a: 1}
+  OpenColor: {r: 0.54509807, g: 1, b: 0.5411765, a: 1}
 --- !u!1 &511587917
 GameObject:
   m_ObjectHideFlags: 0
@@ -5953,6 +5891,8 @@ GameObject:
   - component: {fileID: 558111593}
   - component: {fileID: 558111596}
   - component: {fileID: 558111595}
+  - component: {fileID: 558111598}
+  - component: {fileID: 558111597}
   m_Layer: 0
   m_Name: Entrance Vent down
   m_TagString: Teleport
@@ -6087,7 +6027,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba582fcd699e83447b9e476942630d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Exit: {fileID: 2014551528}
+  _heroDetector: {fileID: 0}
+  _exit: {fileID: 0}
+--- !u!114 &558111597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558111592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4de7d123f7b411b849e85f906e1715a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 558111598}
+--- !u!114 &558111598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558111592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &599544475
 GameObject:
   m_ObjectHideFlags: 0
@@ -7485,6 +7451,8 @@ GameObject:
   - component: {fileID: 782535034}
   - component: {fileID: 782535037}
   - component: {fileID: 782535036}
+  - component: {fileID: 782535039}
+  - component: {fileID: 782535038}
   m_Layer: 0
   m_Name: Exit Door
   m_TagString: Untagged
@@ -7617,6 +7585,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa9ef7efbd96c7042805ad2186b8306b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 0}
+--- !u!114 &782535038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782535033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4de7d123f7b411b849e85f906e1715a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 782535039}
+--- !u!114 &782535039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782535033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &792482369
@@ -11044,7 +11038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665ca0a80871aa84f8268d49b481ba71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Green: {r: 0.003921569, g: 1, b: 0, a: 1}
+  OpenColor: {r: 0.003921569, g: 1, b: 0, a: 1}
 --- !u!1 &1113282793
 GameObject:
   m_ObjectHideFlags: 0
@@ -11812,6 +11806,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1168501681}
+  - component: {fileID: 1168501682}
   m_Layer: 0
   m_Name: Pavement 2
   m_TagString: Untagged
@@ -11842,9 +11837,54 @@ Transform:
   - {fileID: 91119866}
   - {fileID: 2043067168}
   - {fileID: 144718323}
-  - {fileID: 431692309}
   m_Father: {fileID: 65799822}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1168501682
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168501680}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.7517123, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 8.858655, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1169143733
 GameObject:
   m_ObjectHideFlags: 0
@@ -12661,6 +12701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75390568c5b4c3e4290bca16b790afe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _groundCollider: {fileID: 1202519627}
 --- !u!61 &1202519627
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14046,6 +14087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75390568c5b4c3e4290bca16b790afe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _groundCollider: {fileID: 1346515808}
 --- !u!114 &1347921336 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2678019202226021385, guid: c95c03498c6810a4bb1addcb6c78ddd6, type: 3}
@@ -14395,6 +14437,8 @@ GameObject:
   - component: {fileID: 1406675745}
   - component: {fileID: 1406675748}
   - component: {fileID: 1406675747}
+  - component: {fileID: 1406675750}
+  - component: {fileID: 1406675749}
   m_Layer: 0
   m_Name: Exit Vent up
   m_TagString: Teleport
@@ -14529,7 +14573,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba582fcd699e83447b9e476942630d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Exit: {fileID: 2114616986}
+  _heroDetector: {fileID: 0}
+  _exit: {fileID: 0}
+--- !u!114 &1406675749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406675744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4de7d123f7b411b849e85f906e1715a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 1406675750}
+--- !u!114 &1406675750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406675744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1422545466
 GameObject:
   m_ObjectHideFlags: 0
@@ -15533,6 +15603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75390568c5b4c3e4290bca16b790afe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _groundCollider: {fileID: 1517569331}
 --- !u!1 &1522468814
 GameObject:
   m_ObjectHideFlags: 0
@@ -17502,6 +17573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75390568c5b4c3e4290bca16b790afe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _groundCollider: {fileID: 1784619206}
 --- !u!1 &1806691078
 GameObject:
   m_ObjectHideFlags: 0
@@ -18637,6 +18709,8 @@ GameObject:
   - component: {fileID: 1927114025}
   - component: {fileID: 1927114028}
   - component: {fileID: 1927114027}
+  - component: {fileID: 1927114030}
+  - component: {fileID: 1927114029}
   m_Layer: 0
   m_Name: Entrance Teleport Door
   m_TagString: Teleport
@@ -18771,7 +18845,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba582fcd699e83447b9e476942630d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Exit: {fileID: 890941872}
+  _heroDetector: {fileID: 0}
+  _exit: {fileID: 0}
+--- !u!114 &1927114029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927114024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4de7d123f7b411b849e85f906e1715a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 1927114030}
+--- !u!114 &1927114030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927114024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1944091975
 GameObject:
   m_ObjectHideFlags: 0
@@ -19727,6 +19827,8 @@ GameObject:
   - component: {fileID: 2014551529}
   - component: {fileID: 2014551532}
   - component: {fileID: 2014551531}
+  - component: {fileID: 2014551534}
+  - component: {fileID: 2014551533}
   m_Layer: 0
   m_Name: Exit Vent down
   m_TagString: Teleport
@@ -19861,7 +19963,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba582fcd699e83447b9e476942630d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Exit: {fileID: 558111592}
+  _heroDetector: {fileID: 0}
+  _exit: {fileID: 0}
+--- !u!114 &2014551533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014551528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4de7d123f7b411b849e85f906e1715a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 2014551534}
+--- !u!114 &2014551534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014551528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2042026276
 GameObject:
   m_ObjectHideFlags: 0
@@ -20210,6 +20338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75390568c5b4c3e4290bca16b790afe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _groundCollider: {fileID: 2056532676}
 --- !u!1 &2059291278
 GameObject:
   m_ObjectHideFlags: 0
@@ -20790,6 +20919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75390568c5b4c3e4290bca16b790afe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _groundCollider: {fileID: 2113174300}
 --- !u!1 &2114616986
 GameObject:
   m_ObjectHideFlags: 0
@@ -20802,6 +20932,8 @@ GameObject:
   - component: {fileID: 2114616987}
   - component: {fileID: 2114616990}
   - component: {fileID: 2114616989}
+  - component: {fileID: 2114616992}
+  - component: {fileID: 2114616991}
   m_Layer: 0
   m_Name: Entrance Vent up
   m_TagString: Teleport
@@ -20936,7 +21068,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba582fcd699e83447b9e476942630d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Exit: {fileID: 1406675744}
+  _heroDetector: {fileID: 0}
+  _exit: {fileID: 0}
+--- !u!114 &2114616991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114616986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4de7d123f7b411b849e85f906e1715a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 2114616992}
+--- !u!114 &2114616992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114616986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &652876591978363990
 PrefabInstance:
   m_ObjectHideFlags: 0
