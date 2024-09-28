@@ -11,6 +11,7 @@ namespace DangerCity.Gameplay.Hero
     public CallbackValue<bool> IsDie = new CallbackValue<bool>();
     public CallbackValue<bool> IsLadder = new CallbackValue<bool>();
     public CallbackValue<bool> IsJump = new CallbackValue<bool>();
+    public CallbackValue<bool> OnGround = new CallbackValue<bool>();
     public CallbackValue<bool> IsWalk = new CallbackValue<bool>();
     public CallbackValue<bool> IsMove = new CallbackValue<bool>();
     public CallbackValue<bool> CanTeleport = new CallbackValue<bool>();

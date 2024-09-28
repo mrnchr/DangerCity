@@ -7,7 +7,7 @@ using Zenject;
 
 namespace DangerCity.Gameplay.Hero.Movement
 {
-  public class HeroJumpProcessor : IHeroProcessor, ITickable, IDisposable
+  public class HeroLadderProcessor : IHeroProcessor, IFixedTickable, ITickable, IDisposable
   {
     private readonly IHeroController _controller;
     private readonly IExplicitInitializer _initializer;
@@ -15,7 +15,7 @@ namespace DangerCity.Gameplay.Hero.Movement
     private readonly Rigidbody2D _rb;
     private readonly HeroConfig _config;
 
-    public HeroJumpProcessor(IHeroController controller,
+    public HeroLadderProcessor(IHeroController controller,
       IExplicitInitializer initializer,
       IConfigProvider configProvider,
       InputData inputData)
@@ -27,41 +27,38 @@ namespace DangerCity.Gameplay.Hero.Movement
       _config = configProvider.Get<HeroConfig>();
 
       _initializer.Add(this);
-
-      _controller.Model.OnGround.OnChanged += FinishJump;
     }
 
     public void Dispose()
     {
-      _controller.Model.OnGround.OnChanged -= FinishJump;
       _initializer.Remove(this);
+    }
+
+    public void FixedTick()
+    {
+      if (_controller.Model.CanMove && _controller.Model.IsLadder && _rb.velocity.y < 0)
+      {
+        _controller.Model.IsJump.Value = false;
+        _rb.gravityScale = 0;
+      }
     }
 
     public void Tick()
     {
-      if (_controller.Model.CanMove
-        && _inputData.Jump
-        && !_controller.Model.IsJump
-        && (_controller.Model.OnGround || _controller.Model.IsLadder))
+      if (_controller.Model.CanMove 
+        && _controller.Model.IsLadder)
       {
-        Jump();
+        OnLadder();
       }
     }
 
-    private void Jump()
+    private void OnLadder()
     {
-      _rb.gravityScale = 1;
-      _rb.velocity = new Vector2(_rb.velocity.x, 0);
-      _rb.AddForce(Vector2.up * _config.JumpForce, ForceMode2D.Impulse);
-      _controller.Model.IsJump.Value = true;
-    }
-
-    private void FinishJump()
-    {
-      if (_controller.Model.OnGround)
-      {
-        _controller.Model.IsJump.Value = false;
-      }
+      Vector2 velocity = _inputData.Movement.normalized * _config.SpeedOnLadder;
+      if (_controller.Model.IsJump)
+        velocity.y = _rb.velocity.y;
+      
+      _rb.velocity = velocity;
     }
   }
 }

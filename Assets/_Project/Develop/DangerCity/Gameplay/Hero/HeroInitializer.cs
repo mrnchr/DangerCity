@@ -22,6 +22,7 @@ namespace DangerCity.Gameplay.Hero
         _heroProvider.HeroController.AddProcessor(_factory.Create<HeroMoveProcessor>());
         _heroProvider.HeroController.AddProcessor(_factory.Create<HeroJumpProcessor>());
         _heroProvider.HeroController.AddProcessor(_factory.Create<CheckGroundProcessor>());
+        _heroProvider.HeroController.AddProcessor(_factory.Create<HeroLadderProcessor>());
       }
     }
   }

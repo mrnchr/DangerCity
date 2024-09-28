@@ -45,7 +45,7 @@ namespace DangerCity.Gameplay.Hero.Movement
 
     public void FixedTick()
     {
-      _controller.Model.IsJump.Value = 0 >= Physics2D.CircleCast(_groundChecker.position,
+      _controller.Model.OnGround.Value = 0 < Physics2D.CircleCast(_groundChecker.position,
         _physics.AcceptableGroundDistance, Vector2.zero, _filter, _hits);
     }
   }
