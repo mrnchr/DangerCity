@@ -3,7 +3,7 @@ using DangerCity.Infrastructure.LifeCycle;
 using UnityEngine;
 using Zenject;
 
-namespace DangerCity
+namespace DangerCity.Gameplay.Environment
 {
   public class Ground : MonoBehaviour, IInitializable, IFixedTickable
   {

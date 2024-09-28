@@ -25,6 +25,7 @@
       public const string HERO_DETECTOR = SERVICES_MENU + "Hero Detector";
       public const string NEXT_SCENE_LOADER = SERVICES_MENU + "Next Scene Loader";
       public const string HERO_INTERACTION_DETECTOR = SERVICES_MENU + "Hero Interaction Detector";
+      public const string DEATH_ACTIVATOR = SERVICES_MENU + "Death Activator";
     }
   }
 }
