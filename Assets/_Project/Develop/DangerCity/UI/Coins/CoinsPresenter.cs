@@ -1,5 +1,6 @@
 ﻿using System;
 using DangerCity.Gameplay.Hero;
+using DangerCity.Gameplay.Hero.Data;
 using DangerCity.Infrastructure.LifeCycle;
 
 namespace DangerCity.UI.Coins

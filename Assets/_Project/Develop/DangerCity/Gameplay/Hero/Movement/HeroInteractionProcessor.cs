@@ -1,4 +1,5 @@
 ﻿using System;
+using DangerCity.Gameplay.Hero.Meta;
 using DangerCity.Infrastructure.Input;
 using DangerCity.Infrastructure.LifeCycle;
 using Zenject;

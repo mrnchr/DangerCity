@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
 
-namespace DangerCity.Gameplay.Lamp
+namespace DangerCity.Gameplay.Environment.Lamp
 {
   [AddComponentMenu(ACC.Names.LAMP_VIEW)]
   [RequireComponent(typeof(SpriteRenderer))]

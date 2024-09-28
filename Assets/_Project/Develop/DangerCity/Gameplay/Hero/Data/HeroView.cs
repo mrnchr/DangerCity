@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace DangerCity.Gameplay.Hero
+namespace DangerCity.Gameplay.Hero.Data
 {
   [AddComponentMenu(ACC.Names.HERO_VIEW)]
   public class HeroView : MonoBehaviour

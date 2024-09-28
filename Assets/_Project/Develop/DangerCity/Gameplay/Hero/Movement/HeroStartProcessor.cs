@@ -1,4 +1,6 @@
-﻿namespace DangerCity.Gameplay.Hero.Movement
+﻿using DangerCity.Gameplay.Hero.Meta;
+
+namespace DangerCity.Gameplay.Hero.Movement
 {
   public class HeroStartProcessor : IHeroProcessor, IInitializableProcessor
   {

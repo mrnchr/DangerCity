@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DangerCity.Gameplay.Hero
+namespace DangerCity.Gameplay.Hero.Data
 {
   [CreateAssetMenu(menuName = CAC.Names.HERO_CONFIG_MENU, fileName = CAC.Names.HERO_CONFIG_FILE)]
   public class HeroConfig : ScriptableObject

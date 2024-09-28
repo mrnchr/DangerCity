@@ -1,51 +1,51 @@
 ﻿using System;
-using DangerCity.Infrastructure.LifeCycle;
+using DangerCity.Gameplay.Hero.Data;
+using DangerCity.Gameplay.Hero.Meta;
 using UnityEngine;
 using Zenject;
 
 namespace DangerCity.Gameplay.Hero.Movement
 {
   [AddComponentMenu(ACC.Names.HERO_INTERACTION_DETECTOR)]
-  public class HeroInteractionDetector : MonoBehaviour, IInitializable
+  [RequireComponent(typeof(HeroDetector))]
+  public class HeroInteractionDetector : MonoBehaviour
   {
+    [SerializeField]
+    private HeroDetector _heroDetector;
+
     private IHeroProvider _heroProvider;
-    private HeroView _heroView;
     private HeroModel _heroModel;
 
     public event Action OnHeroInteracted;
 
     [Inject]
-    public void Construct(IHeroProvider heroProvider, IExplicitInitializer initializer)
+    public void Construct(HeroModel heroModel)
     {
-      _heroProvider = heroProvider;
-      initializer.Add(this);
+      _heroModel = heroModel;
+      _heroDetector.OnHeroDetected += SubscribeToHeroInteraction;
+      _heroDetector.OnHeroLost += UnsubscribeFromHeroInteraction;
     }
 
-    public void Initialize()
+    private void SubscribeToHeroInteraction()
     {
-      _heroView = _heroProvider.HeroController?.View;
-      _heroModel = _heroProvider.HeroController?.Model;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-      if (IsHeroCollision(collision))
-      {
         _heroModel.OnInteracted += OnHeroInteracted;
-      }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void UnsubscribeFromHeroInteraction()
     {
-      if (IsHeroCollision(collision))
-      {
         _heroModel.OnInteracted -= OnHeroInteracted;
-      }
     }
 
-    private bool IsHeroCollision(Collider2D collision)
+    private void OnDestroy()
     {
-      return _heroView && _heroView.Rigidbody == collision.attachedRigidbody;
+      _heroDetector.OnHeroDetected -= SubscribeToHeroInteraction;
+      _heroDetector.OnHeroLost -= UnsubscribeFromHeroInteraction;
+      _heroModel.OnInteracted -= OnHeroInteracted;
+    }
+
+    private void Reset()
+    {
+      _heroDetector = GetComponent<HeroDetector>();
     }
   }
 }

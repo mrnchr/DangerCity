@@ -1,4 +1,5 @@
 using DangerCity.Gameplay.Hero;
+using DangerCity.Gameplay.Hero.Data;
 using UnityEngine;
 using Zenject;
 

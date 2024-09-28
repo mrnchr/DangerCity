@@ -141,7 +141,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
+  m_SortingOrder: -8
   m_Sprite: {fileID: 21300000, guid: 1be65618513154243b6b118c6b14105c, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -241,7 +241,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -7
   m_Sprite: {fileID: 21300000, guid: 741cf9e4b39eaf04d85bb506e77b78a6, type: 3}
   m_Color: {r: 1, g: 0.2783019, b: 0.2783019, a: 1}
   m_FlipX: 0
@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 3941444664054236321}
   - component: {fileID: 7508152520247266914}
   - component: {fileID: 7508152520247266915}
+  - component: {fileID: 4963143980022099721}
   m_Layer: 0
   m_Name: Exit Door
   m_TagString: Untagged
@@ -367,6 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4de7d123f7b411b849e85f906e1715a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 4963143980022099721}
 --- !u!114 &7508152520247266914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,3 +428,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.71, y: 1.01}
   m_EdgeRadius: 0
+--- !u!114 &4963143980022099721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508152520247266918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

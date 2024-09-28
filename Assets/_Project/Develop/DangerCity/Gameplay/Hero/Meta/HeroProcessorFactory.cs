@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace DangerCity.Gameplay.Hero
+namespace DangerCity.Gameplay.Hero.Meta
 {
   public class HeroProcessorFactory : IHeroProcessorFactory
   {

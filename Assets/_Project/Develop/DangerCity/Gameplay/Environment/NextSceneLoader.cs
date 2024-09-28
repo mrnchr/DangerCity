@@ -1,12 +1,11 @@
-using DangerCity.Gameplay;
 using DangerCity.Gameplay.Hero;
+using DangerCity.Gameplay.Hero.Meta;
 using DangerCity.Gameplay.Hero.Movement;
-using Unity.Android.Types;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace DangerCity
+namespace DangerCity.Gameplay.Environment
 {
   [AddComponentMenu(ACC.Names.NEXT_SCENE_LOADER)]
   [RequireComponent(typeof(HeroInteractionDetector))]

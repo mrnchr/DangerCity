@@ -1,4 +1,4 @@
-namespace DangerCity.Gameplay.Lamp
+namespace DangerCity.Gameplay.Environment.Lamp
 {
   public interface ILampPresenter
   {

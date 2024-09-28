@@ -1,6 +1,6 @@
 ﻿using DangerCity.Infrastructure;
 
-namespace DangerCity.Gameplay.Hero
+namespace DangerCity.Gameplay.Hero.Data
 {
   public class HeroInventory
   {

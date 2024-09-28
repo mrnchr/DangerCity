@@ -1,4 +1,4 @@
-﻿namespace DangerCity.Gameplay.Hero
+﻿namespace DangerCity.Gameplay.Hero.Meta
 {
   public interface IHeroProvider
   {

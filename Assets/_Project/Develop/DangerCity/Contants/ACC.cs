@@ -19,10 +19,12 @@
       public const string COINS_VIEW = VIEW_MENU + "Coins View";
       public const string HERO_VIEW = VIEW_MENU + "Hero View";
       public const string CAMERA_VIEW = VIEW_MENU + "Camera View";
+      public const string TELEPORT = VIEW_MENU + "Teleport";
+      public const string COIN_VIEW = VIEW_MENU + "Coin View";
 
+      public const string HERO_DETECTOR = SERVICES_MENU + "Hero Detector";
       public const string NEXT_SCENE_LOADER = SERVICES_MENU + "Next Scene Loader";
       public const string HERO_INTERACTION_DETECTOR = SERVICES_MENU + "Hero Interaction Detector";
-      public const string TELEPORT = VIEW_MENU + "Teleport";
     }
   }
 }

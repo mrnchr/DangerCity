@@ -1,8 +1,9 @@
 ﻿using System;
+using DangerCity.Gameplay.Hero.Meta;
 using DangerCity.Infrastructure.LifeCycle;
 using UnityEngine;
 
-namespace DangerCity.Gameplay.Hero
+namespace DangerCity.Gameplay.Hero.Movement
 {
   public class HeroAnimator : IHeroProcessor, IDisposable
   {

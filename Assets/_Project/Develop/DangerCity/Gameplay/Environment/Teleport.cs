@@ -1,10 +1,12 @@
 using DangerCity.Gameplay.Hero;
+using DangerCity.Gameplay.Hero.Data;
+using DangerCity.Gameplay.Hero.Meta;
 using DangerCity.Gameplay.Hero.Movement;
 using DangerCity.Infrastructure.LifeCycle;
 using UnityEngine;
 using Zenject;
 
-namespace DangerCity
+namespace DangerCity.Gameplay.Environment
 {
   [AddComponentMenu(ACC.Names.TELEPORT)]
   [RequireComponent(typeof(HeroInteractionDetector))]

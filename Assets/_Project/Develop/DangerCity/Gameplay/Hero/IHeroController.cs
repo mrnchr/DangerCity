@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using DangerCity.Gameplay.Hero.Data;
+using DangerCity.Gameplay.Hero.Meta;
 
 namespace DangerCity.Gameplay.Hero
 {

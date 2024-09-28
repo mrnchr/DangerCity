@@ -1,7 +1,7 @@
 ﻿using System;
 using DangerCity.Infrastructure.LifeCycle;
 
-namespace DangerCity.Gameplay.Lamp
+namespace DangerCity.Gameplay.Environment.Lamp
 {
   public class LampPresenter : ILampPresenter, IDisposable
   {

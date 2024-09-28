@@ -1,4 +1,6 @@
 ﻿using System;
+using DangerCity.Gameplay.Hero.Data;
+using DangerCity.Gameplay.Hero.Meta;
 using DangerCity.Infrastructure;
 using DangerCity.Infrastructure.Input;
 using DangerCity.Infrastructure.LifeCycle;

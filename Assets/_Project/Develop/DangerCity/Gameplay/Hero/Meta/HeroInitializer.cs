@@ -1,7 +1,7 @@
 ﻿using DangerCity.Gameplay.Hero.Movement;
 using Zenject;
 
-namespace DangerCity.Gameplay.Hero
+namespace DangerCity.Gameplay.Hero.Meta
 {
   public class HeroInitializer : IInitializable
   {

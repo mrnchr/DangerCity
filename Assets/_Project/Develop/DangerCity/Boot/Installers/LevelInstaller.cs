@@ -1,7 +1,9 @@
 ﻿using DangerCity.Gameplay;
+using DangerCity.Gameplay.Environment.Lamp;
 using DangerCity.Gameplay.FlexibleCamera;
 using DangerCity.Gameplay.Hero;
-using DangerCity.Gameplay.Lamp;
+using DangerCity.Gameplay.Hero.Data;
+using DangerCity.Gameplay.Hero.Meta;
 using DangerCity.UI.Coins;
 using UnityEngine;
 using Zenject;
