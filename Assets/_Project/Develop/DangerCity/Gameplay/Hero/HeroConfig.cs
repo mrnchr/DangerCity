@@ -8,6 +8,7 @@ namespace DangerCity.Gameplay.Hero
     public float Speed;
     public float JumpForce;
     public float SpeedOnLadder;
+    public float DeathDuration;
 
   }
 }

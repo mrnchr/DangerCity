@@ -27,6 +27,24 @@ namespace DangerCity.Boot.Installers
       BindPlayerInputActions();
       BindInputController();
       BindExplicitInitializer();
+
+      BindTimerFactory();
+      BindTimerService();
+    }
+
+    private void BindTimerService()
+    {
+      Container
+        .BindInterfacesTo<TimerService>()
+        .AsSingle();
+    }
+
+    private void BindTimerFactory()
+    {
+      Container
+        .Bind<ITimerFactory>()
+        .To<TimerFactory>()
+        .AsSingle();
     }
 
     private void BindExplicitInitializer()

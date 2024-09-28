@@ -9,7 +9,6 @@ namespace DangerCity
 {
   public class PlayerController : MonoBehaviour
   {
-    public Vector3 StartPosition;
     public HeroModel HeroModel;
 
     private GameModel _gameModel;
@@ -28,19 +27,9 @@ namespace DangerCity
       _gameModel = gameModel;
     }
 
-    private void Start()
-    {
-      StartPosition = transform.position;
-    }
-
     private void Update()
     {
       Joystick(_inputData.Interact);
-
-      if (HeroModel.IsDie)
-      {
-        enabled = false;
-      }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
