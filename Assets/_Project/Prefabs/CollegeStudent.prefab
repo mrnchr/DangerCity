@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7993913333355135939}
-  - component: {fileID: 7993913333355135937}
   m_Layer: 0
   m_Name: GroundCheck
   m_TagString: GroundCheck
@@ -32,18 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8254986013809556860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7993913333355135937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7993913333355135938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 477cd1d4939a5864b8860915e1a14912, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8254986013809556861
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartPosition: {x: 0, y: 0, z: 0}
-  joystick: {fileID: 0}
+  Joystick: {fileID: 0}
   HeroModel:
     CanMove:
       _value: 1
@@ -236,8 +223,9 @@ MonoBehaviour:
     BodyDirection:
       _value: 1
     TeleportPosition: {x: 0, y: 0, z: 0}
-  _animator: {fileID: 8254986013809556851}
-  _rb: {fileID: 8254986013809556859}
+  Animator: {fileID: 8254986013809556851}
+  Rigidbody: {fileID: 8254986013809556859}
+  GroundChecker: {fileID: 7993913333355135939}
 --- !u!1001 &8254986012638538917
 PrefabInstance:
   m_ObjectHideFlags: 0

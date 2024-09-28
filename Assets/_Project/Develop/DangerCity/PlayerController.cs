@@ -59,19 +59,9 @@ namespace DangerCity
         Destroy(collision.gameObject);
       }
     }
-
-    private void Jump()
-    {
-      _rb.gravityScale = 1;
-      _rb.velocity = new Vector2(_rb.velocity.x, 0);
-      _rb.AddForce(Vector2.up * _config.JumpForce, ForceMode2D.Impulse);
-      HeroModel.IsJump.Value = true;
-    }
-
+    
     public void Joystick(float horizontal = 0f, float vertical = 0f, bool jump = false, bool action = false)
     {
-      if (jump && (!HeroModel.IsJump || HeroModel.IsLadder))
-        Jump();
       if (HeroModel.IsLadder)
         OnLadder(horizontal, vertical);
 

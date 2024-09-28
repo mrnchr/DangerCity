@@ -7,7 +7,7 @@ using Zenject;
 
 namespace DangerCity.Gameplay.Hero.Movement
 {
-  public class HeroMover : IHeroProcessor, ITickable, IDisposable
+  public class HeroMoveProcessor : IHeroProcessor, ITickable, IDisposable
   {
     private readonly IHeroController _controller;
     private readonly IExplicitInitializer _initializer;
@@ -15,7 +15,7 @@ namespace DangerCity.Gameplay.Hero.Movement
     private readonly Rigidbody2D _rb;
     private readonly HeroConfig _config;
 
-    public HeroMover(IHeroController controller,
+    public HeroMoveProcessor(IHeroController controller,
       IExplicitInitializer initializer,
       IConfigProvider configProvider,
       InputData inputData)

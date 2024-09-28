@@ -7,17 +7,12 @@ namespace DangerCity.Gameplay.Hero
   public class HeroView : MonoBehaviour
   {
     public Vector3 StartPosition;
-    public Joystick joystick;
+    public Joystick Joystick;
     public HeroModel HeroModel;
 
-    [SerializeField]
-    private Animator _animator;
-    
-    [SerializeField]
-    private Rigidbody2D _rb;
-    
-    public Animator Animator => _animator;
-    public Rigidbody2D Rigidbody => _rb;
+    public Animator Animator;
+    public Rigidbody2D Rigidbody;
+    public Transform GroundChecker;
     
     [Inject]
     public void Construct(IHeroController controller, HeroModel model)
@@ -28,8 +23,8 @@ namespace DangerCity.Gameplay.Hero
     
     private void Reset()
     {
-      _rb = GetComponent<Rigidbody2D>();
-      _animator = GetComponent<Animator>();
+      Rigidbody = GetComponent<Rigidbody2D>();
+      Animator = GetComponent<Animator>();
     }
   }
 }
