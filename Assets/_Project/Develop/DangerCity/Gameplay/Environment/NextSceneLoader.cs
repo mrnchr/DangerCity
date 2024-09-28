@@ -33,9 +33,8 @@ namespace DangerCity.Gameplay.Environment
       if (_gameModel.IsOpen)
       {
         _gameModel.IsWin.Value = true;
-        int nextBuildIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        if (nextBuildIndex < SceneManager.sceneCountInBuildSettings)
-          SceneManager.LoadScene(nextBuildIndex);
+        int nextBuildIndex = (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings;
+        SceneManager.LoadScene(nextBuildIndex);
       }
     }
 
