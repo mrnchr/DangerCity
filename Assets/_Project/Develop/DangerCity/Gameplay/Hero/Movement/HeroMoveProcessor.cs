@@ -7,7 +7,7 @@ using Zenject;
 
 namespace DangerCity.Gameplay.Hero.Movement
 {
-  public class HeroMoveProcessor : IHeroProcessor, ITickable, IDisposable
+  public class HeroMoveProcessor : IHeroProcessor, IInitializableProcessor, ITickable, IDisposable
   {
     private readonly IHeroController _controller;
     private readonly IExplicitInitializer _initializer;
@@ -27,7 +27,10 @@ namespace DangerCity.Gameplay.Hero.Movement
       _config = configProvider.Get<HeroConfig>();
       
       _initializer.Add(this);
-      
+    }
+
+    public void Initialize()
+    {
       _controller.Model.IsWalk.Value = true;
     }
 

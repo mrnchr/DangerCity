@@ -2,7 +2,6 @@ using DangerCity.Gameplay;
 using DangerCity.Gameplay.Hero;
 using DangerCity.Infrastructure.Input;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace DangerCity
@@ -11,8 +10,6 @@ namespace DangerCity
   {
     public HeroModel HeroModel;
 
-    private GameModel _gameModel;
-    private InputData _inputData;
     private HeroInventory _inventory;
 
     [Inject]
@@ -23,13 +20,6 @@ namespace DangerCity
     {
       HeroModel = heroModel;
       _inventory = inventory;
-      _inputData = inputData;
-      _gameModel = gameModel;
-    }
-
-    private void Update()
-    {
-      Joystick(_inputData.Interact);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,23 +28,6 @@ namespace DangerCity
       {
         _inventory.Coins.Value++;
         Destroy(collision.gameObject);
-      }
-    }
-
-    private void Joystick(bool action = false)
-    {
-      if (action)
-      {
-        if (HeroModel.CanTeleport)
-          transform.position = HeroModel.TeleportPosition;
-
-        if (HeroModel.IsExit)
-        {
-          _gameModel.IsWin.Value = true;
-          int nextBuildIndex = SceneManager.GetActiveScene().buildIndex + 1;
-          if (nextBuildIndex < SceneManager.sceneCountInBuildSettings)
-            SceneManager.LoadScene(nextBuildIndex);
-        }
       }
     }
   }

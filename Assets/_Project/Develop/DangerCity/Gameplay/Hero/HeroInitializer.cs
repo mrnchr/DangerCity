@@ -25,6 +25,7 @@ namespace DangerCity.Gameplay.Hero
         _heroProvider.HeroController.AddProcessor(_factory.Create<CheckGroundProcessor>());
         _heroProvider.HeroController.AddProcessor(_factory.Create<HeroLadderProcessor>());
         _heroProvider.HeroController.AddProcessor(_factory.Create<HeroDieProcessor>());
+        _heroProvider.HeroController.AddProcessor(_factory.Create<HeroInteractionProcessor>());
 
         foreach (IInitializableProcessor processor in _heroProvider.HeroController.GetProcessors<IInitializableProcessor>())
         {

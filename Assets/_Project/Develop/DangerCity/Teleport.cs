@@ -1,33 +1,50 @@
 using DangerCity.Gameplay.Hero;
+using DangerCity.Gameplay.Hero.Movement;
+using DangerCity.Infrastructure.LifeCycle;
 using UnityEngine;
 using Zenject;
 
 namespace DangerCity
 {
-  public class Teleport : MonoBehaviour
+  [AddComponentMenu(ACC.Names.TELEPORT)]
+  [RequireComponent(typeof(HeroInteractionDetector))]
+  public class Teleport : MonoBehaviour, IInitializable
   {
-    public GameObject Exit;
-    private HeroModel _heroModel;
+    [SerializeField]
+    private HeroInteractionDetector _heroDetector;
+
+    [SerializeField]
+    private Transform _exit;
+
+    private IHeroProvider _heroProvider;
+    private HeroView _heroView;
 
     [Inject]
-    public void Construct(HeroModel heroModel)
+    public void Construct(IHeroProvider heroProvider, IExplicitInitializer initializer)
     {
-      _heroModel = heroModel;
+      _heroProvider = heroProvider;
+      initializer.Add(this);
+      _heroDetector.OnHeroInteracted += TransitHero;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Initialize()
     {
-      if (collision.CompareTag("Player"))
-      {
-        _heroModel.CanTeleport.Value = true;
-        _heroModel.TeleportPosition = Exit.transform.position;
-      }
+      _heroView = _heroProvider.HeroController?.View;
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnDestroy()
     {
-      if (collision.CompareTag("Player"))
-        _heroModel.CanTeleport.Value = false;
+      _heroDetector.OnHeroInteracted -= TransitHero;
+    }
+
+    private void TransitHero()
+    {
+      _heroView.transform.position = _exit.position;
+    }
+
+    private void Reset()
+    {
+      _heroDetector = GetComponent<HeroInteractionDetector>();
     }
   }
 }
