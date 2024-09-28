@@ -167,8 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8baf7994507081446b9d76a61da32080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPosition: {x: 0, y: 0, z: 0}
-  joystick: {fileID: 0}
   HeroModel:
     CanMove:
       _value: 0
@@ -177,6 +175,8 @@ MonoBehaviour:
     IsLadder:
       _value: 0
     IsJump:
+      _value: 0
+    OnGround:
       _value: 0
     IsWalk:
       _value: 0
@@ -201,8 +201,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b795599503fc4193aece78678fbdaab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPosition: {x: 0, y: 0, z: 0}
   Joystick: {fileID: 0}
+  StartPosition: {fileID: 0}
+  Animator: {fileID: 8254986013809556851}
+  Rigidbody: {fileID: 8254986013809556859}
+  GroundChecker: {fileID: 7993913333355135939}
   HeroModel:
     CanMove:
       _value: 1
@@ -211,6 +214,8 @@ MonoBehaviour:
     IsLadder:
       _value: 0
     IsJump:
+      _value: 0
+    OnGround:
       _value: 0
     IsWalk:
       _value: 0
@@ -223,9 +228,6 @@ MonoBehaviour:
     BodyDirection:
       _value: 1
     TeleportPosition: {x: 0, y: 0, z: 0}
-  Animator: {fileID: 8254986013809556851}
-  Rigidbody: {fileID: 8254986013809556859}
-  GroundChecker: {fileID: 7993913333355135939}
 --- !u!1001 &8254986012638538917
 PrefabInstance:
   m_ObjectHideFlags: 0

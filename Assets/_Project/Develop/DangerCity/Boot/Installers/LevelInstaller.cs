@@ -1,4 +1,5 @@
 ﻿using DangerCity.Gameplay;
+using DangerCity.Gameplay.FlexibleCamera;
 using DangerCity.Gameplay.Hero;
 using DangerCity.Gameplay.Lamp;
 using DangerCity.UI.Coins;
@@ -22,6 +23,16 @@ namespace DangerCity.Boot.Installers
 
       BindLampPresenter();
       BindCoinsPresenter();
+
+      BindCameraController();
+    }
+
+    private void BindCameraController()
+    {
+      Container
+        .Bind<ICameraController>()
+        .To<CameraController>()
+        .AsSingle();
     }
 
     private void BindHeroInitializer()

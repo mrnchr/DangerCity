@@ -2,4 +2,6 @@
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005C_005Fproject/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005C_005Fproject_005Cdevelop/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005C_005Fproject_005Cdevelop_005Cdangercity_005Ccontants/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005C_005Fproject_005Cdevelop_005Cdangercity_005Cgameplay_005Ccamera/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005C_005Fproject_005Cdevelop_005Cdangercity_005Cgameplay_005Cflexiblecamera/@EntryIndexedValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005C_005Fproject_005Cdevelop_005Cdangercity_005Cinfrastructure_005Ctimer/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
