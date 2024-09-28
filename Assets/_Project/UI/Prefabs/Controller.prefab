@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1377524362928373118}
   - component: {fileID: 1377524362928373119}
   - component: {fileID: 1377524362928373116}
+  - component: {fileID: 199754073317779202}
   m_Layer: 5
   m_Name: EnableMenu
   m_TagString: Untagged
@@ -119,19 +120,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1377524362928373119}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayMenu, Assembly-CSharp
-        m_MethodName: ToggleMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &199754073317779202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377524362928373106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73275e5de1649558f2fc51eef11d6d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1377524362928373116}
 --- !u!1 &1469936417119307725
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +146,7 @@ GameObject:
   - component: {fileID: 2544179516948954287}
   - component: {fileID: 6159536456226814367}
   - component: {fileID: 3147791061060525306}
+  - component: {fileID: 3604669588975120039}
   m_Layer: 5
   m_Name: Action
   m_TagString: Untagged
@@ -251,19 +254,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6159536456226814367}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: JoystickUI, Assembly-CSharp
-        m_MethodName: ActionBtn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &3604669588975120039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469936417119307725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca3c539231549ac9e59cc146ed8c996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 3147791061060525306}
 --- !u!1 &1778702820740085688
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +280,7 @@ GameObject:
   - component: {fileID: 1335296611118062976}
   - component: {fileID: 1874054712106382691}
   - component: {fileID: 4238508047932043765}
+  - component: {fileID: 491082341891341809}
   m_Layer: 5
   m_Name: Jump
   m_TagString: Untagged
@@ -383,19 +388,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1874054712106382691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: JoystickUI, Assembly-CSharp
-        m_MethodName: JumpBtn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &491082341891341809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778702820740085688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1b71a5050943f2b3dd9a31ca0f9878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 4238508047932043765}
 --- !u!1 &3697939054456084468
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,10 +552,42 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2135913962469184634}
   m_SourcePrefab: {fileID: 100100000, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+--- !u!114 &8185459132456112753 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+  m_PrefabInstance: {fileID: 6430679404617016206}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8185459132456112765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8185459132456112764 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
   m_PrefabInstance: {fileID: 6430679404617016206}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8185459132456112765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+  m_PrefabInstance: {fileID: 6430679404617016206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2135913962469184634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8185459132456112765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd29a26ec684ecebdfc90c974727f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _joystick: {fileID: 8185459132456112753}

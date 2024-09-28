@@ -8489,8 +8489,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1642082897}
   - component: {fileID: 1642082899}
-  - component: {fileID: 1642082898}
   - component: {fileID: 1642082900}
+  - component: {fileID: 1642082901}
+  - component: {fileID: 1642082902}
   m_Layer: 0
   m_Name: HorizontalLadder
   m_TagString: Untagged
@@ -8525,18 +8526,6 @@ Transform:
   - {fileID: 1755593703}
   m_Father: {fileID: 8429111}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1642082898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642082896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee15b8e595ce53549a80339c628def75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1642082899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8595,6 +8584,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a2d3493bde141a59d86073b00a589c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1642082901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642082896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461c58f7aa93cca48b0b3d4aa056807d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heroDetector: {fileID: 1642082900}
+--- !u!114 &1642082902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642082896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee15b8e595ce53549a80339c628def75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 1642082899}
 --- !u!1001 &1645658819
 PrefabInstance:
   m_ObjectHideFlags: 0

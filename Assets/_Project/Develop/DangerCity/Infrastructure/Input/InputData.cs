@@ -7,6 +7,7 @@ namespace DangerCity.Infrastructure.Input
     public Vector2 Movement;
     public bool Jump;
     public bool Interact;
+    public bool Menu;
 
     public void Clear()
     {

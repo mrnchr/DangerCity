@@ -5,6 +5,9 @@ using DangerCity.Gameplay.Hero;
 using DangerCity.Gameplay.Hero.Data;
 using DangerCity.Gameplay.Hero.Meta;
 using DangerCity.Gameplay.Hero.Movement;
+using DangerCity.Infrastructure.Input;
+using DangerCity.UI;
+using DangerCity.UI.Buttons;
 using DangerCity.UI.Coins;
 using UnityEngine;
 using Zenject;
@@ -16,6 +19,12 @@ namespace DangerCity.Boot.Installers
   {
     public override void InstallBindings()
     {
+      BindInteractionButtonModel();
+      BindJumpButtonModel();
+      BindMenuButtonModel();
+      BindJoystickModel();
+      BindMobileInputController();
+
       BindGameModel();
       BindHeroInventory();
       BindHeroModel();
@@ -30,6 +39,43 @@ namespace DangerCity.Boot.Installers
       BindCoinsPresenter();
 
       BindCameraController();
+    }
+
+    private void BindMobileInputController()
+    {
+#if UNITY_ANDROID
+      Container
+        .BindInterfacesTo<MobileInputController>()
+        .AsSingle();
+#endif
+    }
+
+    private void BindJoystickModel()
+    {
+      Container
+        .Bind<JoystickModel>()
+        .AsSingle();
+    }
+
+    private void BindMenuButtonModel()
+    {
+      Container
+        .Bind<MenuButtonModel>()
+        .AsSingle();
+    }
+
+    private void BindJumpButtonModel()
+    {
+      Container
+        .Bind<JumpButtonModel>()
+        .AsSingle();
+    }
+
+    private void BindInteractionButtonModel()
+    {
+      Container
+        .Bind<InteractionButtonModel>()
+        .AsSingle();
     }
 
     private void BindHeroLadderService()

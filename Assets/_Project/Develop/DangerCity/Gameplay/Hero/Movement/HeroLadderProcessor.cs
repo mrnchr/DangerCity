@@ -56,7 +56,7 @@ namespace DangerCity.Gameplay.Hero.Movement
 
     private void OnLadder()
     {
-      Vector2 velocity = _inputData.Movement.normalized * _config.SpeedOnLadder;
+      Vector2 velocity = _inputData.Movement * _config.SpeedOnLadder;
       if (_controller.Model.IsJump)
         velocity.y = _rb.velocity.y;
       

@@ -19,7 +19,7 @@ namespace DangerCity.Boot.Installers
 
     [SerializeField]
     private EventSystem _eventSystem;
-    
+
     public override void InstallBindings()
     {
       BindConfigProvider();
@@ -73,10 +73,12 @@ namespace DangerCity.Boot.Installers
 
     private void BindInputController()
     {
+#if UNITY_STANDALONE
       Container
         .BindInterfacesTo<InputController>()
         .AsSingle()
         .WithArguments(_input);
+#endif
     }
 
     private void BindInputData()
