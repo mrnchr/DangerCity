@@ -6,13 +6,13 @@ namespace DangerCity.Gameplay.Hero
   [AddComponentMenu(ACC.Names.HERO_VIEW)]
   public class HeroView : MonoBehaviour
   {
-    public Vector3 StartPosition;
     public Joystick Joystick;
-    public HeroModel HeroModel;
 
+    public Transform StartPosition;
     public Animator Animator;
     public Rigidbody2D Rigidbody;
     public Transform GroundChecker;
+    public HeroModel HeroModel;
     
     [Inject]
     public void Construct(IHeroController controller, HeroModel model)

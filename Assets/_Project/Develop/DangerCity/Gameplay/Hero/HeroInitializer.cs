@@ -19,11 +19,17 @@ namespace DangerCity.Gameplay.Hero
       if (_heroProvider.HeroController != null)
       {
         _heroProvider.HeroController.AddProcessor(_factory.Create<HeroAnimator>());
+        _heroProvider.HeroController.AddProcessor(_factory.Create<HeroStartProcessor>());
         _heroProvider.HeroController.AddProcessor(_factory.Create<HeroMoveProcessor>());
         _heroProvider.HeroController.AddProcessor(_factory.Create<HeroJumpProcessor>());
         _heroProvider.HeroController.AddProcessor(_factory.Create<CheckGroundProcessor>());
         _heroProvider.HeroController.AddProcessor(_factory.Create<HeroLadderProcessor>());
         _heroProvider.HeroController.AddProcessor(_factory.Create<HeroDieProcessor>());
+
+        foreach (IInitializableProcessor processor in _heroProvider.HeroController.GetProcessors<IInitializableProcessor>())
+        {
+          processor.Initialize();
+        }
       }
     }
   }

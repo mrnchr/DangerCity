@@ -21,10 +21,19 @@ namespace DangerCity.Gameplay.Hero
     {
       _view = view;
     }
-    
+
     public TProcessor GetProcessor<TProcessor>() where TProcessor : IHeroProcessor
     {
       return (TProcessor)_heroProcessors.Find(x => x is TProcessor);
+    }
+
+    public IEnumerable<TProcessor> GetProcessors<TProcessor>()
+    {
+      foreach (IHeroProcessor heroProcessor in _heroProcessors)
+      {
+        if (heroProcessor is TProcessor processor)
+          yield return processor;
+      }
     }
 
     public void AddProcessor(IHeroProcessor processor)

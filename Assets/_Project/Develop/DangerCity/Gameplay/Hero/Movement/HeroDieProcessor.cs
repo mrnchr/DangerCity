@@ -5,13 +5,14 @@ using Zenject;
 
 namespace DangerCity.Gameplay.Hero.Movement
 {
-  public class HeroDieProcessor: IHeroProcessor, ITickable, IDisposable
+  public class HeroDieProcessor: IHeroProcessor, IInitializableProcessor, ITickable, IDisposable
   {
     private readonly IHeroController _controller;
     private readonly IExplicitInitializer _initializer;
     private readonly ITimerFactory _timers;
     private readonly HeroConfig _config;
 
+    private HeroStartProcessor _heroStartProcessor;
     private Timer _deathDuration = 0;
 
     public HeroDieProcessor(IHeroController controller,
@@ -25,8 +26,13 @@ namespace DangerCity.Gameplay.Hero.Movement
       _config = configProvider.Get<HeroConfig>();
 
       _initializer.Add(this);
-
+      
       _controller.Model.IsDie.OnChanged += Die;
+    }
+
+    public void Initialize()
+    {
+      _heroStartProcessor = _controller.GetProcessor<HeroStartProcessor>();
     }
 
     private void Die()
@@ -48,9 +54,8 @@ namespace DangerCity.Gameplay.Hero.Movement
     {
       if (_controller.Model.IsDie && _deathDuration <= 0)
       {
-        _controller.View.transform.position = _controller.View.StartPosition;
+        _heroStartProcessor.RestartHero();
         _controller.Model.IsDie.Value = false;
-        _controller.Model.CanMove.Value = true;
       }
     }
   }

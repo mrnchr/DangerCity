@@ -1,4 +1,6 @@
-﻿namespace DangerCity.Gameplay.Hero
+﻿using System.Collections.Generic;
+
+namespace DangerCity.Gameplay.Hero
 {
   public interface IHeroController
   {
@@ -7,5 +9,6 @@
     void SetView(HeroView view);
     HeroModel Model { get; }
     HeroView View { get; }
+    IEnumerable<TProcessor> GetProcessors<TProcessor>();
   }
 }
