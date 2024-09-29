@@ -1,5 +1,4 @@
 ﻿using DangerCity.Infrastructure;
-using DangerCity.Infrastructure.LifeCycle;
 using UnityEngine.SceneManagement;
 
 namespace DangerCity.SceneLoading
@@ -8,23 +7,26 @@ namespace DangerCity.SceneLoading
   {
     private readonly SceneConfig _config;
 
-    public SceneTuple CurrentScene { get; private set; } = new SceneTuple();
+    public SceneTuple CurrentScene { get; private set; }
 
-    public SceneLoader(IConfigProvider configProvider, ICoroutineRunner runner)
+    public SceneLoader(IConfigProvider configProvider)
     {
       _config = configProvider.Get<SceneConfig>();
+      CurrentScene = _config.GetScene(SceneManager.GetActiveScene().name);
     }
 
     public void Load(SceneType id)
     {
-      SceneTuple scene = _config.GetScene(id);
-      CurrentScene = scene;
-      SceneManager.LoadScene(scene.Name);
+      LoadScene(_config.GetScene(id));
     }
-    
+
     public void Load(int id)
     {
-      SceneTuple scene = _config.GetScene(id);
+      LoadScene(_config.GetScene(id));
+    }
+
+    private void LoadScene(SceneTuple scene)
+    {
       CurrentScene = scene;
       SceneManager.LoadScene(scene.Name);
     }

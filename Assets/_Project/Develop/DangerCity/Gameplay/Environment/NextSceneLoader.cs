@@ -37,7 +37,7 @@ namespace DangerCity.Gameplay.Environment
       if (_gameModel.IsOpen)
       {
         _gameModel.IsWin.Value = true;
-        int nextScene = ((int) _sceneLoader.CurrentScene.Id + 1) % typeof(SceneType).GetEnumValues().Length;
+        int nextScene = ((int)_sceneLoader.CurrentScene.Id + 1) % typeof(SceneType).GetEnumValues().Length;
         _sceneLoader.Load(nextScene);
       }
     }

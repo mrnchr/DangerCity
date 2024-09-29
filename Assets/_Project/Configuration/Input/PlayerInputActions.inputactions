@@ -118,6 +118,15 @@
             "id": "a65ce43e-1c9d-4cdb-ab9a-0a88c0f45098",
             "actions": [
                 {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "9a9d4631-d6ad-46e8-9400-bde2e9f316aa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Navigate",
                     "type": "PassThrough",
                     "id": "14364814-f073-4a70-862b-21c5b04a529b",
@@ -386,6 +395,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "RightClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d35abed4-7a6f-4310-b9f4-608e1c4b2823",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

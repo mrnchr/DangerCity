@@ -31,7 +31,7 @@ namespace DangerCity
 
     public void Tick()
     {
-      if (_inputData.Menu)
+      if (_inputData.Pause)
         ToggleMenu();
     }
 

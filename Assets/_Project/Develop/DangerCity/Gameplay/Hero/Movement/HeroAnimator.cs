@@ -22,6 +22,7 @@ namespace DangerCity.Gameplay.Hero.Movement
       initializer.Add(this);
       
       _controller.Model.IsJump.OnChanged += AnimateJump;
+      _controller.Model.OnGround.OnChanged += AnimateJump;
       _controller.Model.IsLadder.OnChanged += AnimateJump;
       _controller.Model.IsDie.OnChanged += AnimateDie;
       _controller.Model.IsMove.OnChanged += AnimateRun;
@@ -40,12 +41,13 @@ namespace DangerCity.Gameplay.Hero.Movement
 
     private void AnimateJump()
     {
-      _animator.SetBool(_isJump, _controller.Model.IsJump || _controller.Model.IsLadder);
+      _animator.SetBool(_isJump, _controller.Model.IsJump || !_controller.Model.OnGround || _controller.Model.IsLadder);
     }
 
     public void Dispose()
     {
       _controller.Model.IsJump.OnChanged -= AnimateJump;
+      _controller.Model.OnGround.OnChanged -= AnimateJump;
       _controller.Model.IsLadder.OnChanged -= AnimateJump;
       _controller.Model.IsDie.OnChanged -= AnimateDie;
       _controller.Model.IsMove.OnChanged -= AnimateRun;

@@ -32,7 +32,7 @@ namespace DangerCity.Infrastructure.Input
       _inputData.Movement = _joystick.Movement;
       _inputData.Jump = _jumpBtn.WasPerformedThisFrame;
       _inputData.Interact = _interactionBtn.WasPerformedThisFrame;
-      _inputData.Menu = _menuBtn.WasPerformedThisFrame;
+      _inputData.Pause = _menuBtn.WasPerformedThisFrame;
     }
   }
 }

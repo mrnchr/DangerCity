@@ -142,6 +142,15 @@ namespace DangerCity.Infrastructure.Input
             ""id"": ""a65ce43e-1c9d-4cdb-ab9a-0a88c0f45098"",
             ""actions"": [
                 {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""9a9d4631-d6ad-46e8-9400-bde2e9f316aa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Navigate"",
                     ""type"": ""PassThrough"",
                     ""id"": ""14364814-f073-4a70-862b-21c5b04a529b"",
@@ -412,6 +421,17 @@ namespace DangerCity.Infrastructure.Input
                     ""action"": ""RightClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d35abed4-7a6f-4310-b9f4-608e1c4b2823"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -453,6 +473,7 @@ namespace DangerCity.Infrastructure.Input
             m_Gameplay_Interaction = m_Gameplay.FindAction("Interaction", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+            m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
             m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
             m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
@@ -584,6 +605,7 @@ namespace DangerCity.Infrastructure.Input
         // UI
         private readonly InputActionMap m_UI;
         private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
+        private readonly InputAction m_UI_Pause;
         private readonly InputAction m_UI_Navigate;
         private readonly InputAction m_UI_Submit;
         private readonly InputAction m_UI_Cancel;
@@ -596,6 +618,7 @@ namespace DangerCity.Infrastructure.Input
         {
             private @PlayerInputActions m_Wrapper;
             public UIActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Pause => m_Wrapper.m_UI_Pause;
             public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
             public InputAction @Submit => m_Wrapper.m_UI_Submit;
             public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
@@ -613,6 +636,9 @@ namespace DangerCity.Infrastructure.Input
             {
                 if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
                 @Navigate.started += instance.OnNavigate;
                 @Navigate.performed += instance.OnNavigate;
                 @Navigate.canceled += instance.OnNavigate;
@@ -641,6 +667,9 @@ namespace DangerCity.Infrastructure.Input
 
             private void UnregisterCallbacks(IUIActions instance)
             {
+                @Pause.started -= instance.OnPause;
+                @Pause.performed -= instance.OnPause;
+                @Pause.canceled -= instance.OnPause;
                 @Navigate.started -= instance.OnNavigate;
                 @Navigate.performed -= instance.OnNavigate;
                 @Navigate.canceled -= instance.OnNavigate;
@@ -708,6 +737,7 @@ namespace DangerCity.Infrastructure.Input
         }
         public interface IUIActions
         {
+            void OnPause(InputAction.CallbackContext context);
             void OnNavigate(InputAction.CallbackContext context);
             void OnSubmit(InputAction.CallbackContext context);
             void OnCancel(InputAction.CallbackContext context);
