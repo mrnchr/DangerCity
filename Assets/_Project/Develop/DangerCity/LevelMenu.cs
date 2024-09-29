@@ -1,14 +1,25 @@
+using DangerCity.Infrastructure.LifeCycle;
+using DangerCity.SceneLoading;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace DangerCity
 {
-  public class LevelMenu : MonoBehaviour
+  public class LevelMenu : MonoBehaviour, IInitializable
   {
     public GameObject LevelSelection;
     public GameObject MainMenu;
+    
+    private ISceneLoader _sceneLoader;
 
-    private void Awake()
+    [Inject]
+    public void Construct(ISceneLoader sceneLoader, IExplicitInitializer initializer)
+    {
+      _sceneLoader = sceneLoader;
+      initializer.Add(this);
+    }
+
+    public void Initialize()
     {
       MainMenu.SetActive(true);
       LevelSelection.SetActive(false);
@@ -20,10 +31,11 @@ namespace DangerCity
       MainMenu.SetActive(!MainMenu.activeSelf);
     }
 
-    public void SelectLevel(string nameScene)
+    public void SelectLevel(int index)
     {
-      if (SceneManager.GetActiveScene().name != nameScene)
-        SceneManager.LoadScene(nameScene);
+      SceneType sceneType = SceneType.Level1 + index;
+      if (_sceneLoader.CurrentScene.Id != sceneType)
+        _sceneLoader.Load(sceneType);
     }
   }
 }

@@ -1,13 +1,22 @@
+using DangerCity.SceneLoading;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace DangerCity
 {
   public class MainMenu : MonoBehaviour
   {
+    private ISceneLoader _sceneLoader;
+
+    [Inject]
+    public void Construct(ISceneLoader sceneLoader)
+    {
+      _sceneLoader = sceneLoader;
+    }
+    
     public void PlayBtn()
     {
-      SceneManager.LoadScene("Level 1");
+      _sceneLoader.Load(SceneType.Level1);
     }
 
     public void ExitBtn()

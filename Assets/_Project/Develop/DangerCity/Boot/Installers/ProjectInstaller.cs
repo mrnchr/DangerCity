@@ -1,6 +1,7 @@
 ﻿using DangerCity.Infrastructure;
 using DangerCity.Infrastructure.Input;
 using DangerCity.Infrastructure.LifeCycle;
+using DangerCity.SceneLoading;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -22,14 +23,37 @@ namespace DangerCity.Boot.Installers
 
     public override void InstallBindings()
     {
+      BindCoroutineRunner();
       BindConfigProvider();
       BindInputData();
       BindPlayerInputActions();
       BindInputController();
       BindExplicitInitializer();
 
+      BindSceneLoader();
+
       BindTimerFactory();
       BindTimerService();
+    }
+
+    private void BindSceneLoader()
+    {
+      Container
+        .Bind<ISceneLoader>()
+        .To<SceneLoader>()
+        .AsSingle();
+    }
+
+    private void BindCoroutineRunner()
+    {
+      Container
+        .Bind<ICoroutineRunner>()
+        .To<CoroutineRunner>()
+        .FromNewComponentOnNewGameObject()
+        .WithGameObjectName("CoroutineRunner")
+        .UnderTransform(x => x.Container.Resolve<Context>().transform)
+        .AsSingle()
+        .CopyIntoDirectSubContainers();
     }
 
     private void BindTimerService()

@@ -1,34 +1,54 @@
+using System;
+using DangerCity.Infrastructure.Input;
+using DangerCity.Infrastructure.LifeCycle;
+using DangerCity.SceneLoading;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace DangerCity
 {
-  public class PlayMenu : MonoBehaviour
+  public class PlayMenu : MonoBehaviour, IInitializable, ITickable, IDisposable
   {
-    public GameObject Score;
+    public GameObject ControllerWindow;
     public GameObject MainMenu;
+    private ISceneLoader _sceneLoader;
+    private InputData _inputData;
+    private IExplicitInitializer _initializer;
 
-    private void Awake()
+    [Inject]
+    public void Construct(ISceneLoader sceneLoader, InputData inputData, IExplicitInitializer initializer)
     {
-      Score.SetActive(true);
+      _initializer = initializer;
+      _inputData = inputData;
+      _sceneLoader = sceneLoader;
+      _initializer.Add(this);
+    }
+
+    public void Initialize()
+    {
       MainMenu.SetActive(false);
     }
 
-    private void Update()
+    public void Tick()
     {
-      if (Input.GetKeyDown(KeyCode.Escape))
+      if (_inputData.Menu)
         ToggleMenu();
+    }
+
+    public void Dispose()
+    {
+      _initializer.Remove(this);
     }
 
     public void ToggleMenu()
     {
-      Score.SetActive(!Score.activeSelf);
+      ControllerWindow.SetActive(!ControllerWindow.activeSelf);
       MainMenu.SetActive(!MainMenu.activeSelf);
     }
 
     public void MainMenuBtn()
     {
-      SceneManager.LoadScene("Menu");
+      _sceneLoader.Load(SceneType.Menu);
     }
   }
 }

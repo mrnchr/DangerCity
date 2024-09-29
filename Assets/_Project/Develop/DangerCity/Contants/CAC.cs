@@ -18,6 +18,9 @@
       
       public const string HERO_CONFIG_MENU = CONFIG_MENU + "Hero";
       public const string HERO_CONFIG_FILE = "Hero Config";
+      
+      public const string SCENE_CONFIG_MENU = CONFIG_MENU + "Scenes";
+      public const string SCENE_CONFIG_FILE = "Scene Config";
     }
   }
 }
