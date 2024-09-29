@@ -1,11 +1,11 @@
-﻿using DangerCity.Infrastructure.LifeCycle;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Zenject;
 
 namespace DangerCity.UI.Buttons
 {
-  public class ButtonView<TModel> : MonoBehaviour, ITickable where TModel : ButtonModel
+  public class ButtonView<TModel> : MonoBehaviour, IPointerDownHandler, ITickable where TModel : ButtonModel
   {
     [SerializeField]
     private Button _button;
@@ -19,15 +19,13 @@ namespace DangerCity.UI.Buttons
       _ticker = ticker;
       _model = model;
       _ticker.Add(this, -1);
-      _button.onClick.AddListener(OnClick);
     }
 
-    private void OnClick()
+    public void OnPointerDown(PointerEventData eventData)
     {
       _model.WasPerformedThisFrame = true;
       _model.FrameCountLost = 0;
     }
-
 
     public void Tick()
     {
@@ -44,7 +42,6 @@ namespace DangerCity.UI.Buttons
 
     private void OnDestroy()
     {
-      _button.onClick.RemoveListener(OnClick);
       _ticker.Remove(this);
     }
 
