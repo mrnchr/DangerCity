@@ -6,46 +6,47 @@ using Zenject;
 
 namespace DangerCity.Gameplay.Hero.Movement
 {
-  [AddComponentMenu(ACC.Names.HERO_INTERACTION_DETECTOR)]
-  [RequireComponent(typeof(HeroDetector))]
-  public class HeroInteractionDetector : MonoBehaviour
-  {
-    [SerializeField]
-    private HeroDetector _heroDetector;
-
-    private IHeroProvider _heroProvider;
-    private HeroModel _heroModel;
-
-    public event Action OnHeroInteracted;
-
-    [Inject]
-    public void Construct(HeroModel heroModel)
+    [AddComponentMenu(ACC.Names.HERO_INTERACTION_DETECTOR)]
+    [RequireComponent(typeof(HeroDetector))]
+    public class HeroInteractionDetector : MonoBehaviour
     {
-      _heroModel = heroModel;
-      _heroDetector.OnHeroDetected += SubscribeToHeroInteraction;
-      _heroDetector.OnHeroLost += UnsubscribeFromHeroInteraction;
-    }
+        [SerializeField]
+        private HeroDetector _heroDetector;
 
-    private void SubscribeToHeroInteraction()
-    {
-        _heroModel.OnInteracted += OnHeroInteracted;
-    }
+        private HeroModel _heroModel;
 
-    private void UnsubscribeFromHeroInteraction()
-    {
-        _heroModel.OnInteracted -= OnHeroInteracted;
-    }
+        private IHeroProvider _heroProvider;
 
-    private void OnDestroy()
-    {
-      _heroDetector.OnHeroDetected -= SubscribeToHeroInteraction;
-      _heroDetector.OnHeroLost -= UnsubscribeFromHeroInteraction;
-      _heroModel.OnInteracted -= OnHeroInteracted;
-    }
+        private void Reset()
+        {
+            _heroDetector = GetComponent<HeroDetector>();
+        }
 
-    private void Reset()
-    {
-      _heroDetector = GetComponent<HeroDetector>();
+        private void OnDestroy()
+        {
+            _heroDetector.OnHeroDetected -= SubscribeToHeroInteraction;
+            _heroDetector.OnHeroLost -= UnsubscribeFromHeroInteraction;
+            _heroModel.OnInteracted -= OnHeroInteracted;
+        }
+
+        public event Action OnHeroInteracted;
+
+        [Inject]
+        public void Construct(HeroModel heroModel)
+        {
+            _heroModel = heroModel;
+            _heroDetector.OnHeroDetected += SubscribeToHeroInteraction;
+            _heroDetector.OnHeroLost += UnsubscribeFromHeroInteraction;
+        }
+
+        private void SubscribeToHeroInteraction()
+        {
+            _heroModel.OnInteracted += OnHeroInteracted;
+        }
+
+        private void UnsubscribeFromHeroInteraction()
+        {
+            _heroModel.OnInteracted -= OnHeroInteracted;
+        }
     }
-  }
 }

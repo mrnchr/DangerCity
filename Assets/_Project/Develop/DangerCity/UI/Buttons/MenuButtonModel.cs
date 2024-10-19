@@ -2,8 +2,8 @@
 
 namespace DangerCity.UI.Buttons
 {
-  [Serializable]
-  public class MenuButtonModel : ButtonModel
-  {
-  }
+    [Serializable]
+    public class MenuButtonModel : ButtonModel
+    {
+    }
 }

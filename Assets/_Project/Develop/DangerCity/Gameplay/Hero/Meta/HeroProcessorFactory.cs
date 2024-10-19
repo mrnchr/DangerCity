@@ -2,18 +2,18 @@
 
 namespace DangerCity.Gameplay.Hero.Meta
 {
-  public class HeroProcessorFactory : IHeroProcessorFactory
-  {
-    private readonly IInstantiator _instantiator;
-
-    public HeroProcessorFactory(IInstantiator instantiator)
+    public class HeroProcessorFactory : IHeroProcessorFactory
     {
-      _instantiator = instantiator;
-    }
+        private readonly IInstantiator _instantiator;
 
-    public TProcessor Create<TProcessor>() where TProcessor : class, IHeroProcessor
-    {
-      return _instantiator.Instantiate<TProcessor>();
+        public HeroProcessorFactory(IInstantiator instantiator)
+        {
+            _instantiator = instantiator;
+        }
+
+        public TProcessor Create<TProcessor>() where TProcessor : class, IHeroProcessor
+        {
+            return _instantiator.Instantiate<TProcessor>();
+        }
     }
-  }
 }

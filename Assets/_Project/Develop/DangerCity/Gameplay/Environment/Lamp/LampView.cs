@@ -4,26 +4,26 @@ using Zenject;
 
 namespace DangerCity.Gameplay.Environment.Lamp
 {
-  [AddComponentMenu(ACC.Names.LAMP_VIEW)]
-  [RequireComponent(typeof(SpriteRenderer))]
-  public class LampView : MonoBehaviour
-  {
-    [FormerlySerializedAs("Green")]
-    [SerializeField]
-    private Color OpenColor;
-
-    private SpriteRenderer _spriteRenderer;
-
-    [Inject]
-    public void Construct(ILampPresenter presenter)
+    [AddComponentMenu(ACC.Names.LAMP_VIEW)]
+    [RequireComponent(typeof(SpriteRenderer))]
+    public class LampView : MonoBehaviour
     {
-      _spriteRenderer = GetComponent<SpriteRenderer>();
-      presenter.SetView(this);
-    }
+        [FormerlySerializedAs("Green")]
+        [SerializeField]
+        private Color OpenColor;
 
-    public void SetOpenColor()
-    {
-      _spriteRenderer.color = OpenColor;
+        private SpriteRenderer _spriteRenderer;
+
+        [Inject]
+        public void Construct(ILampPresenter presenter)
+        {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            presenter.SetView(this);
+        }
+
+        public void SetOpenColor()
+        {
+            _spriteRenderer.color = OpenColor;
+        }
     }
-  }
 }

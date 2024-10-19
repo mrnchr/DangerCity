@@ -7,58 +7,58 @@ using Zenject;
 
 namespace DangerCity.Gameplay.Hero.Movement
 {
-  public class HeroDieProcessor: IHeroProcessor, IInitializableProcessor, ITickable, IDisposable
-  {
-    private readonly IHeroController _controller;
-    private readonly IExplicitInitializer _initializer;
-    private readonly ITimerFactory _timers;
-    private readonly HeroConfig _config;
-
-    private HeroStartProcessor _heroStartProcessor;
-    private Timer _deathDuration = 0;
-
-    public HeroDieProcessor(IHeroController controller,
-      IExplicitInitializer initializer,
-      IConfigProvider configProvider,
-      ITimerFactory timers)
+    public class HeroDieProcessor : IHeroProcessor, IInitializableProcessor, ITickable, IDisposable
     {
-      _controller = controller;
-      _initializer = initializer;
-      _timers = timers;
-      _config = configProvider.Get<HeroConfig>();
+        private readonly HeroConfig _config;
+        private readonly IHeroController _controller;
+        private readonly IExplicitInitializer _initializer;
+        private readonly ITimerFactory _timers;
+        private Timer _deathDuration = 0;
 
-      _initializer.Add(this);
-      
-      _controller.Model.IsDie.OnChanged += Die;
-    }
+        private HeroStartProcessor _heroStartProcessor;
 
-    public void Initialize()
-    {
-      _heroStartProcessor = _controller.GetProcessor<HeroStartProcessor>();
-    }
+        public HeroDieProcessor(IHeroController controller,
+            IExplicitInitializer initializer,
+            IConfigProvider configProvider,
+            ITimerFactory timers)
+        {
+            _controller = controller;
+            _initializer = initializer;
+            _timers = timers;
+            _config = configProvider.Get<HeroConfig>();
 
-    private void Die()
-    {
-      if (_controller.Model.IsDie)
-      {
-        _controller.Model.CanMove.Value = false;
-        _deathDuration = _timers.Create(_config.DeathDuration);
-      }
-    }
+            _initializer.Add(this);
 
-    public void Dispose()
-    {
-      _controller.Model.IsDie.OnChanged -= Die;
-      _initializer.Remove(this);
-    }
+            _controller.Model.IsDie.OnChanged += Die;
+        }
 
-    public void Tick()
-    {
-      if (_controller.Model.IsDie && _deathDuration <= 0)
-      {
-        _heroStartProcessor.RestartHero();
-        _controller.Model.IsDie.Value = false;
-      }
+        public void Dispose()
+        {
+            _controller.Model.IsDie.OnChanged -= Die;
+            _initializer.Remove(this);
+        }
+
+        public void Initialize()
+        {
+            _heroStartProcessor = _controller.GetProcessor<HeroStartProcessor>();
+        }
+
+        public void Tick()
+        {
+            if (_controller.Model.IsDie && _deathDuration <= 0)
+            {
+                _heroStartProcessor.RestartHero();
+                _controller.Model.IsDie.Value = false;
+            }
+        }
+
+        private void Die()
+        {
+            if (_controller.Model.IsDie)
+            {
+                _controller.Model.CanMove.Value = false;
+                _deathDuration = _timers.Create(_config.DeathDuration);
+            }
+        }
     }
-  }
 }

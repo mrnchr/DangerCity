@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace DangerCity.Infrastructure
 {
-  public interface IConfigProvider
-  {
-    TConfig Get<TConfig>() where TConfig : ScriptableObject;
-    List<ScriptableObject> Configs { get; }
-  }
+    public interface IConfigProvider
+    {
+        List<ScriptableObject> Configs { get; }
+        TConfig Get<TConfig>() where TConfig : ScriptableObject;
+    }
 }

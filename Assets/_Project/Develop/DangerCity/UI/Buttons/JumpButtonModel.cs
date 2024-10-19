@@ -2,8 +2,8 @@
 
 namespace DangerCity.UI.Buttons
 {
-  [Serializable]
-  public class JumpButtonModel : ButtonModel
-  {
-  }
+    [Serializable]
+    public class JumpButtonModel : ButtonModel
+    {
+    }
 }

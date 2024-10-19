@@ -1,31 +1,32 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace DangerCity.GitIntegration
 {
-  public static class Utils
-  {
-    public static string ExecuteGitWithParams(string param)
+    public static class Utils
     {
-      var processInfo = new System.Diagnostics.ProcessStartInfo("git")
-      {
-        UseShellExecute = false,
-        WorkingDirectory = Environment.CurrentDirectory,
-        RedirectStandardOutput = true,
-        RedirectStandardError = true,
-        CreateNoWindow = true
-      };
+        public static string ExecuteGitWithParams(string param)
+        {
+            var processInfo = new ProcessStartInfo("git")
+            {
+                UseShellExecute = false,
+                WorkingDirectory = Environment.CurrentDirectory,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                CreateNoWindow = true
+            };
 
-      var process = new System.Diagnostics.Process();
-      process.StartInfo = processInfo;
-      process.StartInfo.FileName = "git";
-      process.StartInfo.Arguments = param;
-      process.Start();
-      process.WaitForExit();
+            var process = new Process();
+            process.StartInfo = processInfo;
+            process.StartInfo.FileName = "git";
+            process.StartInfo.Arguments = param;
+            process.Start();
+            process.WaitForExit();
 
-      if (process.ExitCode != 0)
-        throw new Exception(process.StandardError.ReadLine());
+            if (process.ExitCode != 0)
+                throw new Exception(process.StandardError.ReadLine());
 
-      return process.StandardOutput.ReadLine();
+            return process.StandardOutput.ReadLine();
+        }
     }
-  }
 }

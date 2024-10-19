@@ -4,26 +4,26 @@ using Zenject;
 
 namespace DangerCity.UI.Coins
 {
-  [AddComponentMenu(ACC.Names.COINS_VIEW)]
-  public class CoinsView : MonoBehaviour
-  {
-    [SerializeField]
-    private Text _scoreText;
-  
-    [Inject]
-    public void Construct(ICoinsPresenter presenter)
+    [AddComponentMenu(ACC.Names.COINS_VIEW)]
+    public class CoinsView : MonoBehaviour
     {
-      presenter.SetView(this);
-    }
+        [SerializeField]
+        private Text _scoreText;
 
-    public void SetScore(string text)
-    {
-      _scoreText.text = text;
-    }
+        private void Reset()
+        {
+            _scoreText = GetComponent<Text>();
+        }
 
-    private void Reset()
-    {
-      _scoreText = GetComponent<Text>();
+        [Inject]
+        public void Construct(ICoinsPresenter presenter)
+        {
+            presenter.SetView(this);
+        }
+
+        public void SetScore(string text)
+        {
+            _scoreText.text = text;
+        }
     }
-  }
 }

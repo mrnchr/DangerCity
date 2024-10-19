@@ -9,58 +9,56 @@ using Zenject;
 
 namespace DangerCity.Gameplay.Hero.Movement
 {
-  public class HeroLadderProcessor : IHeroProcessor, IFixedTickable, ITickable, IDisposable
-  {
-    private readonly IHeroController _controller;
-    private readonly IExplicitInitializer _initializer;
-    private readonly InputData _inputData;
-    private readonly Rigidbody2D _rb;
-    private readonly HeroConfig _config;
-
-    public HeroLadderProcessor(IHeroController controller,
-      IExplicitInitializer initializer,
-      IConfigProvider configProvider,
-      InputData inputData)
+    public class HeroLadderProcessor : IHeroProcessor, IFixedTickable, ITickable, IDisposable
     {
-      _controller = controller;
-      _initializer = initializer;
-      _inputData = inputData;
-      _rb = _controller.View.Rigidbody;
-      _config = configProvider.Get<HeroConfig>();
+        private readonly HeroConfig _config;
+        private readonly IHeroController _controller;
+        private readonly IExplicitInitializer _initializer;
+        private readonly InputData _inputData;
+        private readonly Rigidbody2D _rb;
 
-      _initializer.Add(this);
-    }
+        public HeroLadderProcessor(IHeroController controller,
+            IExplicitInitializer initializer,
+            IConfigProvider configProvider,
+            InputData inputData)
+        {
+            _controller = controller;
+            _initializer = initializer;
+            _inputData = inputData;
+            _rb = _controller.View.Rigidbody;
+            _config = configProvider.Get<HeroConfig>();
 
-    public void Dispose()
-    {
-      _initializer.Remove(this);
-    }
+            _initializer.Add(this);
+        }
 
-    public void FixedTick()
-    {
-      if (_controller.Model.CanMove && _controller.Model.IsLadder && _rb.velocity.y < 0)
-      {
-        _controller.Model.IsJump.Value = false;
-        _rb.gravityScale = 0;
-      }
-    }
+        public void Dispose()
+        {
+            _initializer.Remove(this);
+        }
 
-    public void Tick()
-    {
-      if (_controller.Model.CanMove 
-        && _controller.Model.IsLadder)
-      {
-        OnLadder();
-      }
-    }
+        public void FixedTick()
+        {
+            if (_controller.Model.CanMove && _controller.Model.IsLadder && _rb.velocity.y < 0)
+            {
+                _controller.Model.IsJump.Value = false;
+                _rb.gravityScale = 0;
+            }
+        }
 
-    private void OnLadder()
-    {
-      Vector2 velocity = _inputData.Movement * _config.SpeedOnLadder;
-      if (_controller.Model.IsJump)
-        velocity.y = _rb.velocity.y;
-      
-      _rb.velocity = velocity;
+        public void Tick()
+        {
+            if (_controller.Model.CanMove
+                && _controller.Model.IsLadder)
+                OnLadder();
+        }
+
+        private void OnLadder()
+        {
+            Vector2 velocity = _inputData.Movement * _config.SpeedOnLadder;
+            if (_controller.Model.IsJump)
+                velocity.y = _rb.velocity.y;
+
+            _rb.velocity = velocity;
+        }
     }
-  }
 }

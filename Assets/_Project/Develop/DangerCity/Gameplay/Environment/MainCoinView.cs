@@ -4,37 +4,37 @@ using Zenject;
 
 namespace DangerCity.Gameplay.Environment
 {
-  [AddComponentMenu(ACC.Names.MAIN_COIN_VIEW)]
-  [RequireComponent(typeof(HeroDetector))]
-  public class MainCoinView : MonoBehaviour
-  {
-    [SerializeField]
-    private HeroDetector _heroDetector;
-    
-    private GameModel _gameModel;
-
-    [Inject]
-    public void Construct(GameModel gameModel)
+    [AddComponentMenu(ACC.Names.MAIN_COIN_VIEW)]
+    [RequireComponent(typeof(HeroDetector))]
+    public class MainCoinView : MonoBehaviour
     {
-      _heroDetector = GetComponent<HeroDetector>();
-      _gameModel = gameModel;
-      
-      _heroDetector.OnHeroDetected += OpenExit;
-    }
+        [SerializeField]
+        private HeroDetector _heroDetector;
 
-    private void OpenExit()
-    {
-      _gameModel.IsOpen.Value = true;
-    }
+        private GameModel _gameModel;
 
-    private void OnDestroy()
-    {
-      _heroDetector.OnHeroDetected -= OpenExit;
-    }
+        private void Reset()
+        {
+            _heroDetector = GetComponent<HeroDetector>();
+        }
 
-    private void Reset()
-    {
-      _heroDetector = GetComponent<HeroDetector>();
+        private void OnDestroy()
+        {
+            _heroDetector.OnHeroDetected -= OpenExit;
+        }
+
+        [Inject]
+        public void Construct(GameModel gameModel)
+        {
+            _heroDetector = GetComponent<HeroDetector>();
+            _gameModel = gameModel;
+
+            _heroDetector.OnHeroDetected += OpenExit;
+        }
+
+        private void OpenExit()
+        {
+            _gameModel.IsOpen.Value = true;
+        }
     }
-  }
 }

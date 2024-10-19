@@ -2,10 +2,10 @@
 
 namespace DangerCity.UI.Buttons
 {
-  [Serializable]
-  public class ButtonModel
-  {
-    public bool WasPerformedThisFrame;
-    public int FrameCountLost;
-  }
+    [Serializable]
+    public class ButtonModel
+    {
+        public bool WasPerformedThisFrame;
+        public int FrameCountLost;
+    }
 }
